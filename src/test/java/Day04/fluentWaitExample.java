@@ -1,0 +1,43 @@
+package Day04;
+
+import java.util.concurrent.TimeUnit;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class fluentWaitExample {
+	WebDriver driver;
+	WebDriverWait wait;
+
+	@Before
+	public void beforeMethod() {
+
+		WebDriverManager.chromedriver().setup();
+		driver = new ChromeDriver();
+		driver.get("https://opensource-demo.orangehrmlive.com/");
+		
+		
+	}
+	
+	@Test
+    public void test1() {
+		//set interval 5 seconds for 30 seconds
+		Wait wait = new FluentWait(driver)
+				.withTimeout(30, TimeUnit.SECONDS)
+				.pollingEvery(5, TimeUnit.SECONDS)
+		//if exeption just ignore it
+				.ignoring(Exception.class);
+		
+		
+		wait.until(ExpectedConditions.alertIsPresent());
+		
+	}
+}
