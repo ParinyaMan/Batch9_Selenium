@@ -33,7 +33,7 @@ public class explicitWaitExample {
         driver.findElement(By.id("btnLogin")).click();
 
         //initiating explicit wait object
-        wait = new WebDriverWait(driver, 30);
+        WebDriverWait wait = new WebDriverWait(driver, 30);
         
         //waiting for the element to be visible
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("welcome")));
