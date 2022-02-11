@@ -73,8 +73,8 @@ public class dressSaleList {
             driver.findElement(By.xpath("//*[@id=\"center_column\"]/p[2]/a[1]/span")).click();
             
             // verify "Authentication" page
-            String actualTitle = driver.getTitle();
-            String expectedTitle = "Login - My Store";
+            String actualTitle = driver.findElement(By.xpath("//*[@id=\"center_column\"]/h1")).getText();
+            String expectedTitle = "AUTHENTICATION";
             
             if(expectedTitle.equalsIgnoreCase(actualTitle)) {
                 System.out.println("Passed");
