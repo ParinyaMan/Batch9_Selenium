@@ -19,6 +19,7 @@ public class implicitWaitExample {
 		driver = new ChromeDriver();
 		driver.get("http://the-internet.herokuapp.com/");
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		//wait for browser to load all the object
 		
 	}
 	

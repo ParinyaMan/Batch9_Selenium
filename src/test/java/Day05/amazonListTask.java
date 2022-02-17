@@ -21,6 +21,14 @@ public class amazonListTask {
 //	print the name of the product
 //	then verify the price that actually over $1400
 	
+	
+//	return sponsored logo
+//			//div[@class='a-section']//span[@class='a-price-whole']/ancestor::div[@class='a-section']//span[@class='s-label-popover-default']
+//			return price that has sponsored
+//			//div[@class='a-section']//span[@class='a-price-whole'][./ancestor::div[@class='a-section']//span[@class='s-label-popover-default']]
+//			return price that NOT has sponsored
+//			//div[@class='a-section']//span[@class='a-price-whole'][not(./ancestor::div[@class='a-section']//span[@class='s-label-popover-default'])]
+//	
 	WebDriver driver;
 
 	@Before
@@ -66,7 +74,7 @@ public class amazonListTask {
 //    @Before
 //    public void beforeMethod() {
 ////        1) Open the browser
-////        2) Enter the URL “http://practice.automationtesting.in/”
+////        2) Enter the URL ï¿½http://practice.automationtesting.in/ï¿½
 //
 //        WebDriverManager.chromedriver().setup();
 //        driver = new ChromeDriver();

@@ -23,6 +23,7 @@ public class fluentWaitExample {
 		WebDriverManager.chromedriver().setup();
 		driver = new ChromeDriver();
 		driver.get("https://opensource-demo.orangehrmlive.com/");
+		//wait frequently like for 5 seconds until condition meet until 30 seconds
 		
 		
 	}

@@ -11,8 +11,23 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class openBrowserTest {
-
-	
+//	++link: Features
+//	1. //a[text()='Features']
+//	2. //a[contains(text(),'Features')] --recommended
+//
+//	++button:
+//	//button[@type='button' and @class='btn']
+//	//button[contains(text(),'Sign Up')]
+//	//div[@class='dropdown']//button[@type='button' and @class='btn btn-secondary dropdown-toggle' and @id='dropdownMenuButton']
+//	//button[@id='dropdownMenuButton']
+//
+//	++preceding-sibling:
+//	//a[text()='test2 test2']//parent::td[@class='datalistrow']//preceding-sibling::td[@class='datalistrow']//input
+//
+//	++parent & preceding-sibling:
+//
+//	//a[text()='test2 test2']//parent::td[@class='datalistrow']//preceding-sibling::td[@class='datalistrow']//input[@name='contact_id']
+ 	
 	WebDriver driver;
 
 	@Before
@@ -21,7 +36,7 @@ public class openBrowserTest {
 		WebDriverManager.chromedriver().setup();
 		driver = new ChromeDriver();
 		driver.get("http://the-internet.herokuapp.com/");
-		driver.manage().window().maximize();
+//		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
 	
