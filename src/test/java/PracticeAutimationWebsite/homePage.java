@@ -37,13 +37,12 @@ public class homePage {
 	@Test
 	public void TestCase1() {
 
-//		driver.findElement(By.xpath("//html")).click();
-//        3) Click on Shop Menu
+//      3) Click on Shop Menu
 		driver.findElement(menuButton).click();
-//        4) Now click on Home menu button
+//      4) Now click on Home menu button
 		driver.findElement(homeButton).click();
-//        5) Test whether the Home page has Three Sliders only
-		// coming back to this test case next week to complete steps
+//      5) Test whether the Home page has Three Sliders only
+//		6) The Home page must contains only three sliders
 		List<WebElement> sliders = driver.findElements(By.xpath("//*[@id='n2-ss-6']/div"));
 		int numberOfSliders = sliders.size();
 
@@ -58,12 +57,16 @@ public class homePage {
 	@Ignore
 	@Test
 	public void TestCase2() {
+//		3) Click on Shop Menu
 		driver.findElement(menuButton).click();
+//  	
 		driver.findElement(homeButton).click();
-
+//		4) Now click on Home menu button
 		List<WebElement> threeArrivals = driver.findElements(By.xpath(
 				"//body/div[@id='pagewrap']/div[@id='body']/div[@id='layout']/div[@id='content']/div[@id='page-22']/div[@class='page-content entry-content']/div[@id='themify_builder_content-22']/div[@class='themify_builder_row themify_builder_22_row module_row module_row_1 clearfix gutter-default col_align_top']/div[@class='row_inner_wrapper']/div[@class='row_inner']/div[1]/div[1]/div[2]/div"));
 		int numberOfArrivals = threeArrivals.size();
+//		5) Test whether the Home page has Three Arrivals only
+//		6) The Home page must contains only three Arrivals
 		if (numberOfArrivals == 3) {
 			System.out.println("Home page has Three Arrivals only");
 		} else {
@@ -76,16 +79,22 @@ public class homePage {
 	@Ignore
 	@Test
 	public void TestCase3() {
+//		3) Click on Shop Menu
 		driver.findElement(menuButton).click();
+//		4) Now click on Home menu button
 		driver.findElement(homeButton).click();
-
+//		5) Test whether the Home page has Three Arrivals only
+//		6) The Home page must contains only three Arrivals
 		List<WebElement> threeArrivals = driver.findElements(By.xpath(
 				"//body/div[@id='pagewrap']/div[@id='body']/div[@id='layout']/div[@id='content']/div[@id='page-22']/div[@class='page-content entry-content']/div[@id='themify_builder_content-22']/div[@class='themify_builder_row themify_builder_22_row module_row module_row_1 clearfix gutter-default col_align_top']/div[@class='row_inner_wrapper']/div[@class='row_inner']/div[1]/div[1]/div[2]/div"));
 		int numberOfArrivals = threeArrivals.size();
 		int expetedThreeArrivals = 3;
 		Assert.assertEquals(numberOfArrivals, expetedThreeArrivals);
 		System.out.println("Home page has Three Arrivals only");
+//		7) Now click the image in the Arrivals
 		driver.findElement(By.xpath("(//img[@title='Mastering JavaScript'])[1]")).click();
+//		8) Test whether it is navigating to next page where the user can add that book into his basket.
+//		9) Image should be clickable and shoul navigate to next page where user can add that book to his basket
 		Assert.assertEquals(driver.findElement(By.xpath("(//button[normalize-space()='Add to basket'])[1]")).getText(),
 				"ADD TO BASKET");
 		System.out.println("Image is clickable and navigate to next page where user can add that book to basket");
@@ -94,19 +103,27 @@ public class homePage {
 	@Ignore
 	@Test
 	public void TestCase4() {
+//		3) Click on Shop Menu
 		driver.findElement(menuButton).click();
+//		4) Now click on Home menu button
 		driver.findElement(homeButton).click();
-
+//		5) Test whether the Home page has Three Arrivals only
 		List<WebElement> threeArrivals = driver.findElements(By.xpath(
 				"//body/div[@id='pagewrap']/div[@id='body']/div[@id='layout']/div[@id='content']/div[@id='page-22']/div[@class='page-content entry-content']/div[@id='themify_builder_content-22']/div[@class='themify_builder_row themify_builder_22_row module_row module_row_1 clearfix gutter-default col_align_top']/div[@class='row_inner_wrapper']/div[@class='row_inner']/div[1]/div[1]/div[2]/div"));
 		int numberOfArrivals = threeArrivals.size();
 		int expetedThreeArrivals = 3;
+//		6) The Home page must contains only three Arrivals
 		Assert.assertEquals(numberOfArrivals, expetedThreeArrivals);
 		System.out.println("Home page has Three Arrivals only");
+//		7) Now click the image in the Arrivals
 		driver.findElement(By.xpath("(//img[@title='Mastering JavaScript'])[1]")).click();
+//		8) Test whether it is navigating to next page where the user can add that book into his basket.
+//		9) Image should be clickable and shoul navigate to next page where user can add that book to his basket		
 		Assert.assertEquals(driver.findElement(By.xpath("(//button[normalize-space()='Add to basket'])[1]")).getText(),
 				"ADD TO BASKET");
 		System.out.println("Image is clickable and navigate to next page where user can add that book to basket");
+//		10) Click on Description tab for the book you clicked on.
+//		11) There should be a description regarding that book the user clicked on
 		driver.findElement(By.xpath("//a[normalize-space()='Description']")).click();
 		Assert.assertEquals(driver.findElement(By.xpath("//h2[normalize-space()='Product Description']")).getText(),
 				"Product Description");
@@ -116,20 +133,28 @@ public class homePage {
 	@Ignore
 	@Test
 	public void TestCase5() {
+//		3) Click on Shop Menu
 		driver.findElement(menuButton).click();
+//		4) Now click on Home menu button
 		driver.findElement(homeButton).click();
-
+//		5) Test whether the Home page has Three Arrivals only
+//		6) The Home page must contains only three Arrivals
 		List<WebElement> threeArrivals = driver.findElements(By.xpath(
 				"//body/div[@id='pagewrap']/div[@id='body']/div[@id='layout']/div[@id='content']/div[@id='page-22']/div[@class='page-content entry-content']/div[@id='themify_builder_content-22']/div[@class='themify_builder_row themify_builder_22_row module_row module_row_1 clearfix gutter-default col_align_top']/div[@class='row_inner_wrapper']/div[@class='row_inner']/div[1]/div[1]/div[2]/div"));
 		int numberOfArrivals = threeArrivals.size();
 		int expetedThreeArrivals = 3;
 		Assert.assertEquals(numberOfArrivals, expetedThreeArrivals);
 		System.out.println("Home page has Three Arrivals only");
+//		7) Now click the image in the Arrivals
 		driver.findElement(By.xpath("(//img[@title='Mastering JavaScript'])[1]")).click();
+//		8) Test whether it is navigating to next page where the user can add that book into his basket.
 		Assert.assertEquals(driver.findElement(By.xpath("(//button[normalize-space()='Add to basket'])[1]")).getText(),
 				"ADD TO BASKET");
+//		9) Image should be clickable and shoul navigate to next page where user can add that book to his basket
 		System.out.println("Image is clickable and navigate to next page where user can add that book to basket");
+//		10) Now clock on Reviews tab for the book you clicked on.
 		driver.findElement(By.xpath("//a[normalize-space()='Reviews (0)']")).click();
+//		11) There should be a Reviews regarding that book the user clicked on
 		Assert.assertEquals(driver.findElement(By.xpath("//h2[normalize-space()='Reviews']")).getText(), "Reviews");
 		System.out.println("It's show Reviews");
 
@@ -138,21 +163,29 @@ public class homePage {
 	@Ignore
 	@Test
 	public void TestCase6() {
+//		3) Click on Shop Menu
 		driver.findElement(menuButton).click();
+//		4) Now click on Home menu button
 		driver.findElement(homeButton).click();
-
+//		5) Test whether the Home page has Three Arrivals only
+//		6) The Home page must contains only three Arrivals
+//		7) Now click the image in the Arrivals
 		List<WebElement> threeArrivals = driver.findElements(By.xpath(
 				"//body/div[@id='pagewrap']/div[@id='body']/div[@id='layout']/div[@id='content']/div[@id='page-22']/div[@class='page-content entry-content']/div[@id='themify_builder_content-22']/div[@class='themify_builder_row themify_builder_22_row module_row module_row_1 clearfix gutter-default col_align_top']/div[@class='row_inner_wrapper']/div[@class='row_inner']/div[1]/div[1]/div[2]/div"));
 		int numberOfArrivals = threeArrivals.size();
 		int expetedThreeArrivals = 3;
 		Assert.assertEquals(numberOfArrivals, expetedThreeArrivals);
 		System.out.println("Home page has Three Arrivals only");
+//		8) Test whether it is navigating to next page where the user can add that book into his basket.
+//		9) Image should be clickable and shoul navigate to next page where user can add that book to his basket
 		driver.findElement(By.xpath("(//img[@title='Mastering JavaScript'])[1]")).click();
 		Assert.assertEquals(driver.findElement(By.xpath("(//button[normalize-space()='Add to basket'])[1]")).getText(),
 				"ADD TO BASKET");
 		System.out.println("Image is clickable and navigate to next page where user can add that book to basket");
-		// add to basket
+//		10) Click on the Add To Basket button which adds that book to your basket
 		driver.findElement(By.xpath("//button[normalize-space()='Add to basket']")).click();
+//		11) User can view that Book in the Menu item with price.
+//		12) User can add a book by clicking on Add To Basket button which adds that book in to his Basket
 		Assert.assertTrue(driver.findElement(By.xpath("//div[@class='woocommerce-message']")).isDisplayed());
 		System.out.println("Book added to the basket");
 	}
@@ -160,23 +193,34 @@ public class homePage {
 	@Ignore
 	@Test
 	public void TestCase7() {
+//		3) Click on Shop Menu
 		driver.findElement(menuButton).click();
+//		4) Now click on Home menu button
 		driver.findElement(homeButton).click();
-
+//		5) Test whether the Home page has Three Arrivals only
+//		6) The Home page must contains only three Arrivals
 		List<WebElement> threeArrivals = driver.findElements(By.xpath(
 				"//body/div[@id='pagewrap']/div[@id='body']/div[@id='layout']/div[@id='content']/div[@id='page-22']/div[@class='page-content entry-content']/div[@id='themify_builder_content-22']/div[@class='themify_builder_row themify_builder_22_row module_row module_row_1 clearfix gutter-default col_align_top']/div[@class='row_inner_wrapper']/div[@class='row_inner']/div[1]/div[1]/div[2]/div"));
 		int numberOfArrivals = threeArrivals.size();
 		int expetedThreeArrivals = 3;
 		Assert.assertEquals(numberOfArrivals, expetedThreeArrivals);
 		System.out.println("Home page has Three Arrivals only");
+//		7) Now click the image in the Arrivals
+//		8) Test whether it is navigating to next page where the user can add that book into his basket.
+//		9) Image should be clickable and shoul navigate to next page where user can add that book to his basket
 		driver.findElement(By.xpath("(//img[@title='Mastering JavaScript'])[1]")).click();
 		Assert.assertEquals(driver.findElement(By.xpath("(//button[normalize-space()='Add to basket'])[1]")).getText(),
 				"ADD TO BASKET");
 		System.out.println("Image is clickable and navigate to next page where user can add that book to basket");
-		// add to basket
+//		10) Click on the Add To Basket button which adds that book to your basket
 		driver.findElement(By.xpath("//button[normalize-space()='Add to basket']")).click();
+//		11) User can view that Book in the Menu item with price.		
 		Assert.assertTrue(driver.findElement(By.xpath("//div[@class='woocommerce-message']")).isDisplayed());
 		System.out.println("Book added to the basket");
+//		12) User can add a book by clicking on Add To Basket button which adds that book in to his Basket
+//		13) Select more books than the books in stock.Ex if the stock has 20 books, try to add 21.
+//		14) Click the add to basket button
+//		15) Now it throws an error prompt like you must enter a value between 1 and 20		
 		driver.findElement(By.xpath("//input[@title='Qty']")).clear();
 		driver.findElement(By.xpath("//input[@title='Qty']")).sendKeys("7933");
 		driver.findElement(By.xpath("//button[normalize-space()='Add to basket']")).click();
@@ -186,15 +230,25 @@ public class homePage {
 	@Ignore
 	@Test
 	public void TestCase8() {
+//		3) Click on Shop Menu
 		driver.findElement(menuButton).click();
+//		4) Now click on Home menu button
 		driver.findElement(homeButton).click();
-
+//		5) Test whether the Home page has Three Arrivals only
+//		6) The Home page must contains only three Arrivals
 		List<WebElement> threeArrivals = driver.findElements(By.xpath(
 				"//body/div[@id='pagewrap']/div[@id='body']/div[@id='layout']/div[@id='content']/div[@id='page-22']/div[@class='page-content entry-content']/div[@id='themify_builder_content-22']/div[@class='themify_builder_row themify_builder_22_row module_row module_row_1 clearfix gutter-default col_align_top']/div[@class='row_inner_wrapper']/div[@class='row_inner']/div[1]/div[1]/div[2]/div"));
 		int numberOfArrivals = threeArrivals.size();
 		int expetedThreeArrivals = 3;
 		Assert.assertEquals(numberOfArrivals, expetedThreeArrivals);
 		System.out.println("Home page has Three Arrivals only");
+//		7) Now click the image in the Arrivals
+//		8) Test whether it is navigating to next page where the user can add that book into his basket.
+//		9) Image should be clickable and shoul navigate to next page where user can add that book to his basket
+//		10) Click on the Add To Basket button which adds that book to your basket
+//		11) User can view that Book in the Menu item with price.
+//		12) Now click on Item link which navigates to proceed to check out page.
+//		13) User can click on the Item link in menu item after adding the book in to the basket which leads to the check out page
 		driver.findElement(By.xpath("(//img[@title='Mastering JavaScript'])[1]")).click();
 		Assert.assertEquals(driver.findElement(By.xpath("(//button[normalize-space()='Add to basket'])[1]")).getText(),
 				"ADD TO BASKET");
@@ -529,7 +583,7 @@ public class homePage {
 		// click place order
 		driver.findElement(By.xpath("//input[@id='place_order']")).click();
 		// print order details
-		Thread.sleep(3000);
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		System.out.println(driver.findElement(By.xpath("//*[@id=\"page-35\"]/div/div[1]")).getText());
 	}
 

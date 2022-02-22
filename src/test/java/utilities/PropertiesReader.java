@@ -18,8 +18,9 @@ public class PropertiesReader {
 			configFile = new Properties();
 			// load all files and put files to configFile
 			configFile.load(input);
-
+			//close connection
 			input.close();
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
