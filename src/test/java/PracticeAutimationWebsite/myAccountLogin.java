@@ -2,8 +2,9 @@ package PracticeAutimationWebsite;
 
 import java.util.concurrent.TimeUnit;
 
+import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -28,9 +29,14 @@ public class myAccountLogin {
 //		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
-	@Ignore
+	
+	@After
+	public void afterTest() {
+		driver.close();
+	}	
+
 	@Test
-	public void TestCase1() {
+	public void LoginWithValidUsernamePassword() {
 //		3) Click on My Account Menu
 		driver.findElement(myAccountButton).click();
 //		4) Enter registered username in username textbox
@@ -38,15 +44,18 @@ public class myAccountLogin {
 //		5) Enter password in password textbox
 		driver.findElement(loginPassword).sendKeys(password);
 //		6) Click on login button
+		String currentUrl = driver.getCurrentUrl();
 		driver.findElement(By.id("body")).click();
 		driver.findElement(By.xpath("//*[@id=\"customer_login\"]/div[1]/form/p[3]/input[3]")).click();
 //		7) User must successfully login to the web page
+		String nextUrl = driver.getCurrentUrl();
+		Assert.assertTrue(currentUrl.equals(nextUrl));
 		System.out.println(driver.getTitle());
 	}
 	
-	@Ignore
+
 	@Test
-	public void TestCase2() {
+	public void LoginWithIncorrectUsernameIncorrectPassword() {
 //		3) Click on My Account Menu
 		driver.findElement(myAccountButton).click();
 //		4) Enter incorrect username in username textbox
@@ -57,11 +66,12 @@ public class myAccountLogin {
 		driver.findElement(By.id("body")).click();
 		driver.findElement(By.xpath("//*[@id=\"customer_login\"]/div[1]/form/p[3]/input[3]")).click();
 //		7) Proper error must be displayed(ie Invalid username) and prompt to enter login again
+		Assert.assertTrue(driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/ul")).isDisplayed());
 		System.out.println(driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/ul")).getText());
 	}
-	@Ignore
+
 	@Test
-	public void TestCase3() {
+	public void LoginWithCorrectUsernameEmptyPassword() {
 //		3) Click on My Account Menu
 		driver.findElement(myAccountButton).click();
 //		4) Enter valid username in username textbox
@@ -72,11 +82,12 @@ public class myAccountLogin {
 		driver.findElement(By.id("body")).click();
 		driver.findElement(By.xpath("//*[@id=\"customer_login\"]/div[1]/form/p[3]/input[3]")).click();
 //		7) Proper error must be displayed(ie Invalid password) and prompt to enter login again
+		Assert.assertTrue(driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/ul")).isDisplayed());
 		System.out.println(driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/ul")).getText());
 	}
-	@Ignore
+
 	@Test
-	public void TestCase4() {
+	public void LoginWithEmptyUsernameValidPassword() {
 //		3) Click on My Account Menu
 		driver.findElement(myAccountButton).click();
 //		4) Enter empty username in username textbox
@@ -87,11 +98,12 @@ public class myAccountLogin {
 		driver.findElement(By.id("body")).click();
 		driver.findElement(By.xpath("//*[@id=\"customer_login\"]/div[1]/form/p[3]/input[3]")).click();
 //		7) Proper error must be displayed(ie Invalid username) and prompt to enter login again
+		Assert.assertTrue(driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/ul")).isDisplayed());
 		System.out.println(driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/ul")).getText());
 	}
-	@Ignore
+	
 	@Test
-	public void TestCase5() {
+	public void LoginWithEmptyUsernameEmptyPassword() {
 //		3) Click on My Account Menu
 		driver.findElement(myAccountButton).click();
 //		4) Enter empty username in username textbox
@@ -102,11 +114,12 @@ public class myAccountLogin {
 		driver.findElement(By.id("body")).click();
 		driver.findElement(By.xpath("//*[@id=\"customer_login\"]/div[1]/form/p[3]/input[3]")).click();
 //		7) Proper error must be displayed(ie required username) and prompt to enter login again
+		Assert.assertTrue(driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/ul")).isDisplayed());
 		System.out.println(driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/ul")).getText());
 	}
-	@Ignore
+	
 	@Test
-	public void TestCase6() {
+	public void LoginPasswordShouldBeMasked() {
 //		3) Click on My Account Menu
 		driver.findElement(myAccountButton).click();
 //		4) Enter the password field with some characters.
@@ -114,11 +127,12 @@ public class myAccountLogin {
 //		5) The password field should display the characters in asterisks or 
 //		bullets such that the password is not visible on the screen, masked password
 		boolean isEncryped = driver.findElement(loginPassword).getAttribute("type").equals("password");
+		Assert.assertTrue(isEncryped);
 		System.out.println(isEncryped);
 	}
-	@Ignore
+
 	@Test
-	public void TestCase7() {
+	public void LoginHandlesCaseSensitive() {
 //		3) Click on My Account Menu
 		driver.findElement(myAccountButton).click();
 //		4) Enter the case changed username in username textbox
@@ -129,6 +143,7 @@ public class myAccountLogin {
 		driver.findElement(By.id("body")).click();
 		driver.findElement(By.xpath("//*[@id=\"customer_login\"]/div[1]/form/p[3]/input[3]")).click();
 //		7) Login must fail saying incorrect username/password.
+		Assert.assertTrue(driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/ul")).isDisplayed());
 		System.out.println(driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/ul")).getText());
 	}
 	
@@ -159,6 +174,7 @@ public class myAccountLogin {
 //		8) Now press back button
 		driver.navigate().back();
 //		9) User shouldn’t be signed in to his account rather a general webpage must be visible
+		Assert.assertTrue(driver.findElement(By.xpath("//*[@id=\"customer_login\"]/div[1]/h2")).isDisplayed());
 		System.out.println(driver.findElement(By.xpath("//*[@id=\"customer_login\"]/div[1]/h2")).getText()+" Page");
 	}
 	

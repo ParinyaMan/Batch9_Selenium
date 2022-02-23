@@ -2,8 +2,9 @@ package PracticeAutimationWebsite;
 
 import java.util.concurrent.TimeUnit;
 
+import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -30,9 +31,14 @@ public class myAccount {
 //		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
-	@Ignore
+
+	@After
+	public void afterTest() {
+		driver.close();
+	}
+
 	@Test
-	public void TestCase1() {
+	public void MyAccountsDashboard() {
 //		3) Click on My Account Menu
 		driver.findElement(myAccountButton).click();
 //		4) Enter registered username in username textbox
@@ -47,11 +53,12 @@ public class myAccount {
 //		8) Click on Myaccount link which leads to Dashboard	
 		driver.findElement(myAccountButton).click();
 //		9) User must view Dashboard of the site
+		Assert.assertTrue(driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/div")).isDisplayed());
 		System.out.println(driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/div")).getText());
 	}
-	@Ignore
+
 	@Test
-	public void TestCase2() {
+	public void MyAccountsOrdersLink() {
 //		3) Click on My Account Menu
 		driver.findElement(myAccountButton).click();
 //		4) Enter registered username in username textbox
@@ -68,11 +75,13 @@ public class myAccount {
 //		9) Click on Orders link
 		driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/nav/ul/li[2]/a")).click();
 //		10) User must view their orders on clicking orders link
-		System.out.println(driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/div/div")).getText());	
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		Assert.assertTrue(driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/div")).isDisplayed());
+		System.out.println(driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/div")).getText());
 	}
-	@Ignore
+
 	@Test
-	public void TestCase3() {
+	public void MyAccountsOrdersDetials() {
 //		3) Click on My Account Menu
 		driver.findElement(myAccountButton).click();
 //		4) Enter registered username in username textbox
@@ -107,11 +116,12 @@ public class myAccount {
 //		driver.findElement(By.xpath("//input[@id='place_order']")).click();
 		driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/div/table/tbody/tr/td[5]/a")).click();
 //		11) User must view his Order details,customer details and billing details on clicking view button
+		Assert.assertTrue(driver.findElement(By.xpath("/html/body")).isDisplayed());
 		System.out.println(driver.findElement(By.xpath("/html/body")).getText());
 	}
-	@Ignore
+
 	@Test
-	public void TestCase4() {
+	public void MyAccountsOrderStatus() {
 //		3) Click on My Account Menu
 		driver.findElement(myAccountButton).click();
 //		4) Enter registered username in username textbox
@@ -130,11 +140,12 @@ public class myAccount {
 //		10) Click view button
 		driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/div/table/tbody/tr/td[5]/a")).click();
 //		11) User must view Order Number Ordered date and Status of the order on clicking view button		
+		Assert.assertTrue(driver.findElement(By.xpath("/html/body")).isDisplayed());
 		System.out.println(driver.findElement(By.xpath("/html/body")).getText());
 	}
-	@Ignore
+
 	@Test
-	public void TestCase5() {
+	public void MyAccountsAddressFunctionalityBilling() {
 //		3) Click on My Account Menu
 		driver.findElement(myAccountButton).click();
 //		4) Enter registered username in username textbox
@@ -151,11 +162,38 @@ public class myAccount {
 //		9) Click on Address link
 		driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/nav/ul/li[4]/a")).click();
 //		10) User must view billing address and ship address
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		Assert.assertTrue(driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/div")).isDisplayed());
 		System.out.println(driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/div")).getText());
 	}
-	@Ignore
+
 	@Test
-	public void TestCase6() {
+	public void MyAccountsAddressFunctionalityShipping() {
+//		3) Click on My Account Menu
+		driver.findElement(myAccountButton).click();
+//		4) Enter registered username in username textbox
+		driver.findElement(loginEmail).sendKeys(email);
+//		5) Enter password in password textbox
+		driver.findElement(loginPassword).sendKeys(password);
+//		6) Click on login button
+		driver.findElement(By.id("body")).click();
+		driver.findElement(By.xpath("//*[@id=\"customer_login\"]/div[1]/form/p[3]/input[3]")).click();
+//		7) User must successfully login to the web page
+		System.out.println(driver.getTitle());
+//		8) Click on Myaccount link which leads to Dashboard	
+		driver.findElement(myAccountButton).click();
+//		9) Click on Address link
+		driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/nav/ul/li[4]/a")).click();
+//		10) Click Edit on Shipping Address
+		driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/div/div/div[2]/header/a")).click();
+//		11) User can Edit Shipping address	
+		Assert.assertTrue(driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/div/form")).isDisplayed());
+		System.out.println(driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/div/form")).getText());
+
+	}
+
+	@Test
+	public void MyAccountsAccountDetails() {
 //		3) Click on My Account Menu
 		driver.findElement(myAccountButton).click();
 //		4) Enter registered username in username textbox
@@ -174,38 +212,13 @@ public class myAccount {
 //		10) Click Edit on Shipping Address
 		driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/div/div/div[2]/header/a")).click();
 //		11) User can Edit Shipping address		
+		Assert.assertTrue(driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/div/form")).isDisplayed());
 		System.out.println(driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/div/form")).getText());
-		
-		
+
 	}
-	@Ignore
+
 	@Test
-	public void TestCase7() {
-//		3) Click on My Account Menu
-		driver.findElement(myAccountButton).click();
-//		4) Enter registered username in username textbox
-		driver.findElement(loginEmail).sendKeys(email);
-//		5) Enter password in password textbox
-		driver.findElement(loginPassword).sendKeys(password);
-//		6) Click on login button
-		driver.findElement(By.id("body")).click();
-		driver.findElement(By.xpath("//*[@id=\"customer_login\"]/div[1]/form/p[3]/input[3]")).click();
-//		7) User must successfully login to the web page
-		System.out.println(driver.getTitle());
-//		8) Click on Myaccount link which leads to Dashboard	
-		driver.findElement(myAccountButton).click();
-//		9) Click on Address link
-		driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/nav/ul/li[4]/a")).click();
-//		10) Click Edit on Shipping Address
-		driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/div/div/div[2]/header/a")).click();
-//		11) User can Edit Shipping address		
-		System.out.println(driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/div/form")).getText());
-		
-		
-	}
-	
-	@Test
-	public void TestCase8() {
+	public void MyAccountsLogOut() {
 //		3) Click on My Account Menu
 		driver.findElement(myAccountButton).click();
 //		4) Enter registered username in username textbox
@@ -222,11 +235,9 @@ public class myAccount {
 //		9) Click on Logout button
 		driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/nav/ul/li[6]/a")).click();
 //		10) On clicking logout,User successfully comes out from the site
+		Assert.assertTrue(driver.findElement(By.xpath("//*[@id=\"customer_login\"]/div[1]")).isDisplayed());
 		System.out.println(driver.findElement(By.xpath("//*[@id=\"customer_login\"]/div[1]")).getText());
-		
-		
+
 	}
-	
-	
-	
+
 }

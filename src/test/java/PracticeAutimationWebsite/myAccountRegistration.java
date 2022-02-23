@@ -2,14 +2,14 @@ package PracticeAutimationWebsite;
 
 import java.util.concurrent.TimeUnit;
 
+import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import com.github.javafaker.Faker;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -30,26 +30,31 @@ public class myAccountRegistration {
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
 
-	@Ignore
+	@After
+	public void afterTest() {
+		driver.close();
+	}
+
 	@Test
-	public void TestCase1() {
+	public void RegistrationSignIn() {
 // 		3) Click on My Account Menu
 		driver.findElement(myAccountButton).click();
 //		4) Enter registered Email Address in Email-Address textbox
-		driver.findElement(registerEmail).sendKeys(email);
+		Faker faker = new Faker();
+		driver.findElement(registerEmail).sendKeys(faker.name().firstName() + "@gmail.com");
 //		5) Enter your own password in password textbox
 		driver.findElement(registerPassword).sendKeys(password);
 //		6) Click on Register button
 		driver.findElement(By.id("body")).click();
 		driver.findElement(By.xpath("//*[@id=\"customer_login\"]/div[2]/form/p[3]/input[3]")).click();
 //		7) User will be registered successfully and will be navigated to the Home page
+		Assert.assertTrue(driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/div/p[1]")).isDisplayed());
 		System.out.println(driver.getTitle());
 
 	}
 
-	@Ignore
 	@Test
-	public void TestCase2() {
+	public void RegistrationWithInvalidEmailId() {
 //		3) Click on My Account Menu
 		driver.findElement(myAccountButton).click();
 //		4) Enter invalid Email Address in Email-Address textbox
@@ -57,16 +62,18 @@ public class myAccountRegistration {
 //		5) Enter your own password in password textbox
 		driver.findElement(registerPassword).sendKeys(password);
 //		6) Click on Register button
+		String currentUrl = driver.getCurrentUrl();
 		driver.findElement(By.id("body")).click();
 		driver.findElement(By.xpath("//*[@id=\"customer_login\"]/div[2]/form/p[3]/input[3]")).click();
 //		7) Registration must fail with a warning message(ie You must enter a valid email address)
+		String nextUrl = driver.getCurrentUrl();
+		Assert.assertTrue(currentUrl.equals(nextUrl));
 		System.out.println("Registration failed");
 
 	}
 
-	@Ignore
 	@Test
-	public void TestCase3() {
+	public void RegistrationWithEmptyEmailId() {
 //		3) Click on My Account Menu
 		driver.findElement(myAccountButton).click();
 //		4) Enter empty Email Address in Email-Address textbox
@@ -74,16 +81,18 @@ public class myAccountRegistration {
 //		5) Enter your own password in password textbox
 		driver.findElement(registerPassword).sendKeys(password);
 //		6) Click on Register button
+		String currentUrl = driver.getCurrentUrl();
 		driver.findElement(By.id("body")).click();
 		driver.findElement(By.xpath("//*[@id=\"customer_login\"]/div[2]/form/p[3]/input[3]")).click();
 //		7) Registration must fail with a warning message(ie You must enter a valid email address)
+		String nextUrl = driver.getCurrentUrl();
+		Assert.assertTrue(currentUrl.equals(nextUrl));
 		System.out.println("Registration failed");
 
 	}
 
-	@Ignore
 	@Test
-	public void TestCase4() {
+	public void RegistrationWithEmptyPassword() {
 //		3) Click on My Account Menu
 		driver.findElement(myAccountButton).click();
 //		4) Enter valid Email Address in Email-Address textbox
@@ -94,6 +103,7 @@ public class myAccountRegistration {
 		driver.findElement(By.id("body")).click();
 		driver.findElement(By.xpath("//*[@id=\"customer_login\"]/div[2]/form/p[3]/input[3]")).click();
 //		7) Registration must fail with a warning message(ie please enter an account password)
+		Assert.assertTrue(driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/ul/li")).isDisplayed());
 		System.out.println(driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/ul/li")).getText());
 
 	}
@@ -110,6 +120,7 @@ public class myAccountRegistration {
 		driver.findElement(By.id("body")).click();
 		driver.findElement(By.xpath("//*[@id=\"customer_login\"]/div[2]/form/p[3]/input[3]")).click();
 //		7) Registration must fail with a warning message(ie please enter an account password)
+		Assert.assertTrue(driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/ul/li")).isDisplayed());
 		System.out.println(driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/ul/li")).getText());
 
 	}

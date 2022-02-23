@@ -4,9 +4,9 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -39,11 +39,16 @@ public class shop {
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
 
-	@Ignore
+	@After
+	public void afterTest() {
+		driver.close();
+	}
+
 	@Test
-	public void TestCase1() {
+	public void ShopFilterByPriceFunctionality() {
 //		3) Click on Shop Menu
 		driver.findElement(shopButton).click();
+		String currentUrl = driver.getCurrentUrl();
 //		4) Adjust the filter by price between 150 to 450 rps
 		WebElement slider = driver.findElement(By.xpath(
 				"//div[@class='price_slider ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all']//span[2]"));
@@ -57,30 +62,36 @@ public class shop {
 		for (WebElement book : books) {
 			System.out.println(book.getText());
 		}
+		String nextUrl = driver.getCurrentUrl();
+		Assert.assertFalse(currentUrl.equals(nextUrl));
 
 	}
 
-	@Ignore
 	@Test
-	public void TestCase2() {
+	public void ShopProductCategoriesFunctionality() {
 //		3) Click on Shop Menu
 		driver.findElement(shopButton).click();
 //		4) Click any of the product links available in the product category
+		String currentUrl = driver.getCurrentUrl();
 		driver.findElement(By.xpath("//*[@id=\"content\"]/ul/li[2]/a[1]/h3")).click();
 //		5) Now user can view only that particular product
+		String nextUrl = driver.getCurrentUrl();
+		Assert.assertFalse(currentUrl.equals(nextUrl));
 		System.out.println(driver.getTitle());
 
 	}
 
-	@Ignore
 	@Test
-	public void TestCase3() {
+	public void ShopDefaultSortingFunctionalityPopularity() {
 //		3) Click on Shop Menu
 		driver.findElement(shopButton).click();
+		String currentUrl = driver.getCurrentUrl();
 //		4) Click on Sort by Popularity item in Default sorting dropdown
 		Select select = new Select(driver.findElement(By.xpath("//*[@id=\"content\"]/form/select")));
 		select.selectByValue("popularity");
 //		5) Now user can view the popular products only
+		String nextUrl = driver.getCurrentUrl();
+		Assert.assertFalse(currentUrl.equals(nextUrl));
 		List<WebElement> books = driver.findElements(By.xpath("//*[@id=\"content\"]/ul/li[\"i\"]"));
 		for (WebElement book : books) {
 			System.out.println(book.getText());
@@ -88,15 +99,17 @@ public class shop {
 
 	}
 
-	@Ignore
 	@Test
-	public void TestCase4() {
+	public void ShopDefaultSortingFunctionalityRating() {
 //		3) Click on Shop Menu
 		driver.findElement(shopButton).click();
+		String currentUrl = driver.getCurrentUrl();
 //		4) Click on Sort by Average ratings in Default sorting dropdown
 		Select select = new Select(driver.findElement(By.xpath("//*[@id=\"content\"]/form/select")));
 		select.selectByValue("rating");
 //		5) Now user can view the popular products only***Average
+		String nextUrl = driver.getCurrentUrl();
+		Assert.assertFalse(currentUrl.equals(nextUrl));
 		List<WebElement> books = driver.findElements(By.xpath("//*[@id=\"content\"]/ul/li[\"i\"]"));
 		for (WebElement book : books) {
 			System.out.println(book.getText());
@@ -104,15 +117,17 @@ public class shop {
 
 	}
 
-	@Ignore
 	@Test
-	public void TestCase5() {
+	public void ShopDefaultSortingFunctionalityDate() {
 //		3) Click on Shop Menu
 		driver.findElement(shopButton).click();
+		String currentUrl = driver.getCurrentUrl();
 //		4) Click on Sort by Newness ratings in Default sorting dropdown
 		Select select = new Select(driver.findElement(By.xpath("//*[@id=\"content\"]/form/select")));
 		select.selectByValue("date");
 //		5) Now user can view the popular products only***Newness
+		String nextUrl = driver.getCurrentUrl();
+		Assert.assertFalse(currentUrl.equals(nextUrl));
 		List<WebElement> books = driver.findElements(By.xpath("//*[@id=\"content\"]/ul/li[\"i\"]"));
 		for (WebElement book : books) {
 			System.out.println(book.getText());
@@ -120,15 +135,17 @@ public class shop {
 
 	}
 
-	@Ignore
 	@Test
-	public void TestCase6() {
+	public void ShopDefaultSortingFunctionalityPrice() {
 //		3) Click on Shop Menu
 		driver.findElement(shopButton).click();
+		String currentUrl = driver.getCurrentUrl();
 //		4) Click on Sort by Low to High Item in Default sorting dropdown
 		Select select = new Select(driver.findElement(By.xpath("//*[@id=\"content\"]/form/select")));
 		select.selectByValue("price");
 //		5) Now user can view the popular products only***Low to High
+		String nextUrl = driver.getCurrentUrl();
+		Assert.assertFalse(currentUrl.equals(nextUrl));
 		List<WebElement> books = driver.findElements(By.xpath("//*[@id=\"content\"]/ul/li[\"i\"]"));
 		for (WebElement book : books) {
 			System.out.println(book.getText());
@@ -136,15 +153,17 @@ public class shop {
 
 	}
 
-	@Ignore
 	@Test
-	public void TestCase7() {
+	public void ShopDefaultSortingFunctionalityPriceDesc() {
 //		3) Click on Shop Menu
 		driver.findElement(shopButton).click();
+		String currentUrl = driver.getCurrentUrl();
 //		4) Click on Sort by High to Low Item in Default sorting dropdown
 		Select select = new Select(driver.findElement(By.xpath("//*[@id=\"content\"]/form/select")));
 		select.selectByValue("price-desc");
 //		5) Now user can view the popular products only***High to Low
+		String nextUrl = driver.getCurrentUrl();
+		Assert.assertFalse(currentUrl.equals(nextUrl));
 		List<WebElement> books = driver.findElements(By.xpath("//*[@id=\"content\"]/ul/li[\"i\"]"));
 		for (WebElement book : books) {
 			System.out.println(book.getText());
@@ -152,9 +171,8 @@ public class shop {
 
 	}
 
-	@Ignore
 	@Test
-	public void TestCase8() {
+	public void ShopReadMoreFunctionality() {
 //		3) Click on Shop Menu
 		driver.findElement(shopButton).click();
 //		4) Click on read more button in home page
@@ -166,20 +184,19 @@ public class shop {
 
 	}
 
-	@Ignore
 	@Test
-	public void TestCase9() {
+	public void ShopSaleFunctionality() {
 //		3) Click on Shop Menu
 		driver.findElement(shopButton).click();
 //		4) Click on Sale written product in home page
 		driver.findElement(By.xpath("//*[@id=\"content\"]/ul/li[1]/a[1]/span[1]")).click();
 //		5) User can clearly view the actual price with old price striken for the sale written products
+		Assert.assertTrue(driver.findElement(By.xpath("//*[@id=\"product-169\"]/div[2]/div[1]/p")).isDisplayed());
 		System.out.println(driver.findElement(By.xpath("//*[@id=\"product-169\"]/div[2]/div[1]/p")).getText());
 	}
 
-	@Ignore
 	@Test
-	public void TestCase10() throws InterruptedException {
+	public void ShopAddBasketViewBasketFunctionality() throws InterruptedException {
 //		3) Click on Shop Menu
 		driver.findElement(shopButton).click();
 //		4) Click on the Add To Basket button which adds that book to your basket
@@ -213,13 +230,13 @@ public class shop {
 		driver.findElement(By.xpath("//input[@id='place_order']")).click();
 //		13) On clicking place order button user completes his process where the page navigates to Order confirmation page with order details,bank details,customer details and billing details.
 		Thread.sleep(3000);
+		Assert.assertTrue(driver.findElement(By.xpath("//*[@id=\"page-35\"]/div/div[1]")).isDisplayed());
 		System.out.println(driver.findElement(By.xpath("//*[@id=\"page-35\"]/div/div[1]")).getText());
 
 	}
 
-	@Ignore
 	@Test
-	public void TestCase11() throws InterruptedException {
+	public void ShopAddBasketViewBasketThroughItemLink() throws InterruptedException {
 //		3) Click on Shop Menu
 		driver.findElement(shopButton).click();
 //		4) Click on the Add To Basket button which adds that book to your basket
@@ -255,12 +272,13 @@ public class shop {
 		driver.findElement(By.xpath("//input[@id='place_order']")).click();
 //		13) On clicking place order button user completes his process where the page navigates to Order confirmation page with order details,bank details,customer details and billing details.
 		Thread.sleep(3000);
+		Assert.assertTrue(driver.findElement(By.xpath("//*[@id=\"page-35\"]/div/div[1]")).isDisplayed());
 		System.out.println(driver.findElement(By.xpath("//*[@id=\"page-35\"]/div/div[1]")).getText());
 
 	}
 
 	@Test
-	public void TestCase12() throws InterruptedException {
+	public void ShopAddBasketViewBasketTaxFunctionality() throws InterruptedException {
 //		3) Click on Shop Menu
 		driver.findElement(shopButton).click();
 //		4) Click on the Add To Basket button which adds that book to your basket
@@ -279,29 +297,30 @@ public class shop {
 //		10) Tax rate for indian should be 2% and for abroad it should be 5%
 		driver.findElement(By.xpath("//*[@id=\"page-34\"]/div/div[1]/div/div/div/a")).click();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		Assert.assertTrue(driver.findElement(By.xpath("//*[@id=\"s2id_billing_country\"]")).isDisplayed());
 		driver.findElement(By.xpath("//*[@id=\"s2id_billing_country\"]")).click();
 		List<WebElement> countries = driver.findElements(By.xpath("//*[@id=\"select2-results-1\"]/li"));
-	    Scanner scan = new Scanner(System.in); 
-	    System.out.println("Enter your country");
-	    String input = scan.nextLine();
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Enter your full name of country");
+		String input = scan.nextLine();
 		for (WebElement country : countries) {
 			String c = country.getText();
 			System.out.println(c);
-			if (c.equalsIgnoreCase("India")) {
-				country.click();
-				Thread.sleep(3000);
-				String subtotal = driver.findElement(By.xpath("//*[@id=\"order_review\"]/table/tfoot/tr[1]/td/span"))
-						.getText().replace("₹", "");
-				String tax = driver.findElement(By.xpath("//*[@id=\"order_review\"]/table/tfoot/tr[2]/td")).getText()
-						.replace("₹", "");
-				if ((Double.parseDouble(tax) / Double.parseDouble(subtotal)) * 100 == 2) {
-					System.out.println(c+" tax is 2%");
+			if (c.equalsIgnoreCase(input)) {
+				if (c.equalsIgnoreCase("India")) {
+					country.click();
+					Thread.sleep(3000);
+					String subtotal = driver
+							.findElement(By.xpath("//*[@id=\"order_review\"]/table/tfoot/tr[1]/td/span")).getText()
+							.replace("₹", "");
+					String tax = driver.findElement(By.xpath("//*[@id=\"order_review\"]/table/tfoot/tr[2]/td"))
+							.getText().replace("₹", "");
+					if ((Double.parseDouble(tax) / Double.parseDouble(subtotal)) * 100 == 2) {
+						System.out.println(c + " tax is 2%");
+						break;
+					}
 
 				}
-			
-			}
-
-			if (c.equalsIgnoreCase(input)) {
 				country.click();
 				String subtotal = driver.findElement(By.xpath("//*[@id=\"order_review\"]/table/tfoot/tr[1]/td/span"))
 						.getText().replace("₹", "");
@@ -309,7 +328,7 @@ public class shop {
 						.replace("₹", "");
 				if ((Double.parseDouble(tax) / Double.parseDouble(subtotal)) * 100 == 5) {
 					System.out.println(c + " tax is 5%");
-
+					break;
 				}
 
 			}

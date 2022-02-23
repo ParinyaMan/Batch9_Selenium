@@ -1,14 +1,11 @@
 package PracticeAutimationWebsite;
 
-import static org.junit.Assert.assertTrue;
-
 import java.util.List;
-import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -32,17 +29,20 @@ public class homePage {
 //		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
+	
+	@After
+	public void afterTest() {
+		driver.close();
+	}	
 
-	@Ignore
 	@Test
-	public void TestCase1() {
+	public void HomePageWithThreeSlidersOnly() {
 
 //      3) Click on Shop Menu
 		driver.findElement(menuButton).click();
 //      4) Now click on Home menu button
 		driver.findElement(homeButton).click();
 //      5) Test whether the Home page has Three Sliders only
-//		6) The Home page must contains only three sliders
 		List<WebElement> sliders = driver.findElements(By.xpath("//*[@id='n2-ss-6']/div"));
 		int numberOfSliders = sliders.size();
 
@@ -51,12 +51,12 @@ public class homePage {
 		} else {
 			System.out.println("failed");
 		}
-
+//		6) The Home page must contains only three sliders
+		Assert.assertTrue(numberOfSliders == 3);
 	}
 
-	@Ignore
 	@Test
-	public void TestCase2() {
+	public void HomePageWithThreeArrivalsOnly() {
 //		3) Click on Shop Menu
 		driver.findElement(menuButton).click();
 //  	
@@ -66,19 +66,19 @@ public class homePage {
 				"//body/div[@id='pagewrap']/div[@id='body']/div[@id='layout']/div[@id='content']/div[@id='page-22']/div[@class='page-content entry-content']/div[@id='themify_builder_content-22']/div[@class='themify_builder_row themify_builder_22_row module_row module_row_1 clearfix gutter-default col_align_top']/div[@class='row_inner_wrapper']/div[@class='row_inner']/div[1]/div[1]/div[2]/div"));
 		int numberOfArrivals = threeArrivals.size();
 //		5) Test whether the Home page has Three Arrivals only
-//		6) The Home page must contains only three Arrivals
+
 		if (numberOfArrivals == 3) {
 			System.out.println("Home page has Three Arrivals only");
 		} else {
 			System.out.println("failed");
 			System.out.println(numberOfArrivals);
 		}
-
+//		6) The Home page must contains only three Arrivals		
+		Assert.assertTrue(numberOfArrivals == 3);
 	}
 
-	@Ignore
 	@Test
-	public void TestCase3() {
+	public void HomePageImagesInArrivalsShouldNavigate() {
 //		3) Click on Shop Menu
 		driver.findElement(menuButton).click();
 //		4) Now click on Home menu button
@@ -100,9 +100,8 @@ public class homePage {
 		System.out.println("Image is clickable and navigate to next page where user can add that book to basket");
 	}
 
-	@Ignore
 	@Test
-	public void TestCase4() {
+	public void HomePageArrivalsImagesDescription() {
 //		3) Click on Shop Menu
 		driver.findElement(menuButton).click();
 //		4) Now click on Home menu button
@@ -130,15 +129,15 @@ public class homePage {
 		System.out.println("It's show Product Description");
 	}
 
-	@Ignore
 	@Test
-	public void TestCase5() {
+	public void HomePageArrivalsImagesReviews() {
 //		3) Click on Shop Menu
 		driver.findElement(menuButton).click();
 //		4) Now click on Home menu button
 		driver.findElement(homeButton).click();
 //		5) Test whether the Home page has Three Arrivals only
 //		6) The Home page must contains only three Arrivals
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		List<WebElement> threeArrivals = driver.findElements(By.xpath(
 				"//body/div[@id='pagewrap']/div[@id='body']/div[@id='layout']/div[@id='content']/div[@id='page-22']/div[@class='page-content entry-content']/div[@id='themify_builder_content-22']/div[@class='themify_builder_row themify_builder_22_row module_row module_row_1 clearfix gutter-default col_align_top']/div[@class='row_inner_wrapper']/div[@class='row_inner']/div[1]/div[1]/div[2]/div"));
 		int numberOfArrivals = threeArrivals.size();
@@ -160,9 +159,8 @@ public class homePage {
 
 	}
 
-	@Ignore
 	@Test
-	public void TestCase6() {
+	public void HomePageArrivalsImagesAddBasket() {
 //		3) Click on Shop Menu
 		driver.findElement(menuButton).click();
 //		4) Now click on Home menu button
@@ -190,9 +188,8 @@ public class homePage {
 		System.out.println("Book added to the basket");
 	}
 
-	@Ignore
 	@Test
-	public void TestCase7() {
+	public void HomePageArrivalsAddBasketWithMoreBooks() {
 //		3) Click on Shop Menu
 		driver.findElement(menuButton).click();
 //		4) Now click on Home menu button
@@ -217,19 +214,21 @@ public class homePage {
 //		11) User can view that Book in the Menu item with price.		
 		Assert.assertTrue(driver.findElement(By.xpath("//div[@class='woocommerce-message']")).isDisplayed());
 		System.out.println("Book added to the basket");
+		String cartBefore = driver.findElement(By.id("wpmenucartli")).getText();
 //		12) User can add a book by clicking on Add To Basket button which adds that book in to his Basket
-//		13) Select more books than the books in stock.Ex if the stock has 20 books, try to add 21.
-//		14) Click the add to basket button
-//		15) Now it throws an error prompt like you must enter a value between 1 and 20		
+//		13) Select more books than the books in stock.Ex if the stock has 20 books, try to add 21.	
 		driver.findElement(By.xpath("//input[@title='Qty']")).clear();
 		driver.findElement(By.xpath("//input[@title='Qty']")).sendKeys("7933");
+//		14) Click the add to basket button
 		driver.findElement(By.xpath("//button[normalize-space()='Add to basket']")).click();
+//		15) Now it throws an error prompt like you must enter a value between 1 and 20
+		String cartAfter = driver.findElement(By.id("wpmenucartli")).getText();
+		Assert.assertTrue(cartBefore.equals(cartAfter));
 		System.out.println("Error Prompt");
 	}
 
-	@Ignore
 	@Test
-	public void TestCase8() {
+	public void HomeArrivalsAddBasketItems() {
 //		3) Click on Shop Menu
 		driver.findElement(menuButton).click();
 //		4) Now click on Home menu button
@@ -261,9 +260,8 @@ public class homePage {
 		System.out.println(driver.getTitle());
 	}
 
-	@Ignore
 	@Test
-	public void TestCase9() {
+	public void HomeArrivalsAddBasketItemsCoupon() {
 		driver.findElement(menuButton).click();
 		driver.findElement(homeButton).click();
 
@@ -290,11 +288,12 @@ public class homePage {
 		driver.findElement(By.xpath("//input[@name='apply_coupon']")).click();
 		System.out.println("Coupon Applied :"
 				+ driver.findElement(By.xpath("//td[@data-title='Coupon: krishnasakinala']")).getText());
+//		15) User can able to apply coupon by entering ‘krishnasakinala’ in the coupon textbox which give 50rps off on the total price	
+		Assert.assertTrue(driver.findElement(By.xpath("//td[@data-title='Coupon: krishnasakinala']")).isDisplayed());
 	}
 
-	@Ignore
 	@Test
-	public void TestCase10() {
+	public void THomeArrivalsAddBasketItemsCouponValueLessThan450() {
 		driver.findElement(menuButton).click();
 		driver.findElement(homeButton).click();
 
@@ -317,12 +316,14 @@ public class homePage {
 		// apply coupon
 		driver.findElement(By.xpath("//input[@id='coupon_code']")).sendKeys("krishnasakinala");
 		driver.findElement(By.xpath("//input[@name='apply_coupon']")).click();
+//		15) User can not able to apply coupon by entering ‘krishnasakinala’ in the coupon textbox which give 50rps off on the total price
+//		because the coupon is applicable for the book price > 450 rps
+		Assert.assertTrue(driver.findElement(By.xpath("//div[@id='body']//li[1]")).isDisplayed());
 		System.out.println(driver.findElement(By.xpath("//div[@id='body']//li[1]")).getText());
 	}
 
-	@Ignore
 	@Test
-	public void TestCase11() {
+	public void HomeArrivalsAddBasketItemsRemovebook() {
 		driver.findElement(menuButton).click();
 		driver.findElement(homeButton).click();
 
@@ -342,14 +343,15 @@ public class homePage {
 		System.out.println("Book added to the basket");
 		driver.findElement(By.xpath("//a[@title='View your shopping cart']")).click();
 		System.out.println(driver.getTitle());
-		// remove
 		driver.findElement(By.xpath("//a[normalize-space()='×']")).click();
+		// 14) User has the feasibility to remove the book at the time of check out also
+		Assert.assertTrue(driver.findElement(By.xpath("//p[@class='cart-empty']")).isDisplayed());
 		System.out.println(driver.findElement(By.xpath("//p[@class='cart-empty']")).getText());
+
 	}
 
-	@Ignore
 	@Test
-	public void TestCase12() {
+	public void HomeArrivalsAddBasketItemsAddBook() {
 		driver.findElement(menuButton).click();
 		driver.findElement(homeButton).click();
 
@@ -373,12 +375,13 @@ public class homePage {
 		driver.findElement(By.xpath("//input[@title='Qty']")).clear();
 		driver.findElement(By.xpath("//input[@title='Qty']")).sendKeys("2");
 		driver.findElement(By.xpath("//input[@name='update_cart']")).click();
+//		16) User has the feasibility to Update Basket at the time of check out.
 		System.out.println(driver.findElement(By.xpath("//div[@class='woocommerce-message']")).getText());
+		Assert.assertFalse(driver.findElement(By.xpath("//input[@name='update_cart']")).isEnabled());
 	}
 
-	@Ignore
 	@Test
-	public void TestCase13() {
+	public void HomeArrivalsAddBasketItemsCheckOutBookFinalPrice() {
 		driver.findElement(menuButton).click();
 		driver.findElement(homeButton).click();
 
@@ -398,15 +401,19 @@ public class homePage {
 		System.out.println("Book added to the basket");
 		driver.findElement(By.xpath("//a[@title='View your shopping cart']")).click();
 		System.out.println(driver.getTitle());
+//		14) User has the feasibility to find the total price of the books at to find the total price of the books at the time of check out
+		Assert.assertTrue(driver
+				.findElement(
+						By.xpath("//td[@class='product-subtotal']//span[@class='woocommerce-Price-amount amount']"))
+				.isDisplayed());
 		System.out.println("Total is: " + driver
 				.findElement(
 						By.xpath("//td[@class='product-subtotal']//span[@class='woocommerce-Price-amount amount']"))
 				.getText());
 	}
 
-	@Ignore
 	@Test
-	public void TestCase14() {
+	public void HomeArrivalsAddBasketItemsCheckOutUpdateBasket() {
 		driver.findElement(menuButton).click();
 		driver.findElement(homeButton).click();
 
@@ -430,12 +437,13 @@ public class homePage {
 		driver.findElement(By.xpath("//input[@title='Qty']")).clear();
 		driver.findElement(By.xpath("//input[@title='Qty']")).sendKeys("2");
 		driver.findElement(By.xpath("//input[@name='update_cart']")).click();
+//		16) User has the feasibility to Update Basket at the time of check out
+		Assert.assertTrue(driver.findElement(By.xpath("//div[@class='woocommerce-message']")).isDisplayed());
 		System.out.println(driver.findElement(By.xpath("//div[@class='woocommerce-message']")).getText());
 	}
 
-	@Ignore
 	@Test
-	public void TestCase15() {
+	public void HomeArrivalsAddBasketItemsCheckOutTotalSubtotalCondition() {
 		driver.findElement(menuButton).click();
 		driver.findElement(homeButton).click();
 
@@ -455,15 +463,17 @@ public class homePage {
 		System.out.println("Book added to the basket");
 		driver.findElement(By.xpath("//a[@title='View your shopping cart']")).click();
 		System.out.println(driver.getTitle());
-		System.out.println("Subtotal: " + driver.findElement(By.xpath("//td[@data-title='Subtotal']")).getText());
-		System.out.println("Total: "
-				+ driver.findElement(By.xpath("//tr[@class='order-total']//td[@data-title='Total']")).getText());
+//		14) The total always < subtotal because taxes are added in the subtotal
+		String subtotal = driver.findElement(By.xpath("//td[@data-title='Subtotal']")).getText();
+		String total = driver.findElement(By.xpath("//tr[@class='order-total']//td[@data-title='Total']")).getText();
+		System.out.println("Subtotal: " + subtotal);
+		System.out.println("Total: " + total);
+		Assert.assertFalse(subtotal.equals(total));
 
 	}
 
-	@Ignore
 	@Test
-	public void TestCase16() {
+	public void HomeArrivalsAddBasketItemsCheckOutFunctionality() {
 		driver.findElement(menuButton).click();
 		driver.findElement(homeButton).click();
 
@@ -486,15 +496,20 @@ public class homePage {
 		System.out.println("Subtotal: " + driver.findElement(By.xpath("//td[@data-title='Subtotal']")).getText());
 		System.out.println("Total: "
 				+ driver.findElement(By.xpath("//tr[@class='order-total']//td[@data-title='Total']")).getText());
-		// click proceed to checkout
+		String currentUrl = driver.getCurrentUrl();
+//		15) Now click on Proceed to Check out button which navigates to payment gateway page.
+//		16) Clicking on Proceed to Checkout button leads to payment gateway page
+//		17)Clicking on Proceed to Checkout button leads to payment gateway page
 		driver.findElement(By.xpath("//a[normalize-space()='Proceed to Checkout']")).click();
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		String nextUrl = driver.getCurrentUrl();
+		Assert.assertFalse(currentUrl.equals(nextUrl));
 		System.out.println(driver.getTitle());
 
 	}
 
-	@Ignore
 	@Test
-	public void TestCase17() {
+	public void HomeArrivalsAddBasketItemsCheckOutPaymentGateway() {
 		driver.findElement(menuButton).click();
 		driver.findElement(homeButton).click();
 
@@ -533,14 +548,16 @@ public class homePage {
 		driver.findElement(By.xpath("//a[@class='select2-choice select2-default']")).click();
 		driver.findElement(By.xpath("//*[@id=\"select2-results-2\"]/li[7]")).click();
 		driver.findElement(By.id("billing_postcode")).sendKeys(faker.address().zipCode());
-		// add coupon
+//		18)User has the feasibility to add coupon in the payment gateway page and also he can find billing,order and additional details.
+		Assert.assertTrue(driver.findElement(By.xpath("//*[@id=\"customer_details\"]/div[2]/div/h3")).isDisplayed());
 		driver.findElement(By.xpath("//a[normalize-space()='Click here to enter your code']")).click();
+		Assert.assertTrue(driver.findElement(By.xpath("//*[@id=\"page-35\"]/div/div[1]/form[2]/p[2]/input")).isEnabled());
 		driver.findElement(By.xpath("(//input[@id='payment_method_cod'])[1]")).click();
 
 	}
 
 	@Test
-	public void TestCase18() throws InterruptedException {
+	public void HomeArrivalsAddBasketItemsCheckOutPaymentGatewayPlaceOrder() throws InterruptedException {
 		driver.findElement(menuButton).click();
 		driver.findElement(homeButton).click();
 
@@ -584,6 +601,7 @@ public class homePage {
 		driver.findElement(By.xpath("//input[@id='place_order']")).click();
 		// print order details
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		Assert.assertTrue(driver.findElement(By.xpath("//*[@id=\"page-35\"]/div/div[1]")).isDisplayed());
 		System.out.println(driver.findElement(By.xpath("//*[@id=\"page-35\"]/div/div[1]")).getText());
 	}
 
