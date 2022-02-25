@@ -1,5 +1,7 @@
 package utilities;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -37,6 +39,7 @@ public class Driver {
 		driver.get(PropertiesReader.getProperty("shortCodeURL"));
 		//maximize
 //		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		return driver;
 	}
 	
@@ -50,8 +53,10 @@ public class Driver {
 	}
 	
 	public static void login() {
-		driver.findElement(By.id("userIdLabel")).sendKeys(PropertiesReader.getProperty("username"));
-		driver.findElement(By.id("password")).sendKeys(PropertiesReader.getProperty("passwordShrtCode"));
+		driver.findElement(By.xpath("//*[@id=\"userId\"]")).click();
+		driver.findElement(By.xpath("//*[@id=\"userId\"]")).sendKeys(PropertiesReader.getProperty("usernameShortCode"));
+		driver.findElement(By.xpath("//*[@id=\"password\"]")).click();
+		driver.findElement(By.xpath("//*[@id=\"password\"]")).sendKeys(PropertiesReader.getProperty("passwordShortCode"));
 		driver.findElement(By.xpath("/html/body/app-root/div[2]/scr-login/div[3]/form/div[3]/button")).click();
 	}
 	
