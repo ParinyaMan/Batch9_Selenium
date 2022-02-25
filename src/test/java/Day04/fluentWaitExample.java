@@ -1,9 +1,9 @@
 package Day04;
 
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeMethod;
 import java.util.concurrent.TimeUnit;
 
-import org.junit.Before;
-import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -17,7 +17,7 @@ public class fluentWaitExample {
 	WebDriver driver;
 	WebDriverWait wait;
 
-	@Before
+	@BeforeMethod
 	public void beforeMethod() {
 
 		WebDriverManager.chromedriver().setup();

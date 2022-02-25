@@ -1,11 +1,11 @@
 package PracticeAutimationWebsite;
 
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeMethod;
+import org.testng.AssertJUnit;
 import java.util.concurrent.TimeUnit;
 
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -23,7 +23,7 @@ public class myAccount {
 	String email = "123abc@gmail.com";
 	String password = "TechCircle789!qe";
 
-	@Before
+	@BeforeMethod
 	public void beforeMethod() {
 		WebDriverManager.chromedriver().setup();
 		driver = new ChromeDriver();
@@ -32,7 +32,7 @@ public class myAccount {
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
 
-	@After
+	@AfterMethod
 	public void afterTest() {
 		driver.close();
 	}
@@ -53,7 +53,7 @@ public class myAccount {
 //		8) Click on Myaccount link which leads to Dashboard	
 		driver.findElement(myAccountButton).click();
 //		9) User must view Dashboard of the site
-		Assert.assertTrue(driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/div")).isDisplayed());
+		AssertJUnit.assertTrue(driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/div")).isDisplayed());
 		System.out.println(driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/div")).getText());
 	}
 
@@ -76,7 +76,7 @@ public class myAccount {
 		driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/nav/ul/li[2]/a")).click();
 //		10) User must view their orders on clicking orders link
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		Assert.assertTrue(driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/div")).isDisplayed());
+		AssertJUnit.assertTrue(driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/div")).isDisplayed());
 		System.out.println(driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/div")).getText());
 	}
 
@@ -116,7 +116,7 @@ public class myAccount {
 //		driver.findElement(By.xpath("//input[@id='place_order']")).click();
 		driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/div/table/tbody/tr/td[5]/a")).click();
 //		11) User must view his Order details,customer details and billing details on clicking view button
-		Assert.assertTrue(driver.findElement(By.xpath("/html/body")).isDisplayed());
+		AssertJUnit.assertTrue(driver.findElement(By.xpath("/html/body")).isDisplayed());
 		System.out.println(driver.findElement(By.xpath("/html/body")).getText());
 	}
 
@@ -140,7 +140,7 @@ public class myAccount {
 //		10) Click view button
 		driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/div/table/tbody/tr/td[5]/a")).click();
 //		11) User must view Order Number Ordered date and Status of the order on clicking view button		
-		Assert.assertTrue(driver.findElement(By.xpath("/html/body")).isDisplayed());
+		AssertJUnit.assertTrue(driver.findElement(By.xpath("/html/body")).isDisplayed());
 		System.out.println(driver.findElement(By.xpath("/html/body")).getText());
 	}
 
@@ -163,7 +163,7 @@ public class myAccount {
 		driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/nav/ul/li[4]/a")).click();
 //		10) User must view billing address and ship address
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		Assert.assertTrue(driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/div")).isDisplayed());
+		AssertJUnit.assertTrue(driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/div")).isDisplayed());
 		System.out.println(driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/div")).getText());
 	}
 
@@ -187,7 +187,7 @@ public class myAccount {
 //		10) Click Edit on Shipping Address
 		driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/div/div/div[2]/header/a")).click();
 //		11) User can Edit Shipping address	
-		Assert.assertTrue(driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/div/form")).isDisplayed());
+		AssertJUnit.assertTrue(driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/div/form")).isDisplayed());
 		System.out.println(driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/div/form")).getText());
 
 	}
@@ -212,7 +212,7 @@ public class myAccount {
 //		10) Click Edit on Shipping Address
 		driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/div/div/div[2]/header/a")).click();
 //		11) User can Edit Shipping address		
-		Assert.assertTrue(driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/div/form")).isDisplayed());
+		AssertJUnit.assertTrue(driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/div/form")).isDisplayed());
 		System.out.println(driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/div/form")).getText());
 
 	}
@@ -235,7 +235,7 @@ public class myAccount {
 //		9) Click on Logout button
 		driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/nav/ul/li[6]/a")).click();
 //		10) On clicking logout,User successfully comes out from the site
-		Assert.assertTrue(driver.findElement(By.xpath("//*[@id=\"customer_login\"]/div[1]")).isDisplayed());
+		AssertJUnit.assertTrue(driver.findElement(By.xpath("//*[@id=\"customer_login\"]/div[1]")).isDisplayed());
 		System.out.println(driver.findElement(By.xpath("//*[@id=\"customer_login\"]/div[1]")).getText());
 
 	}

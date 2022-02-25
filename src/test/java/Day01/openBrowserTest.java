@@ -1,10 +1,10 @@
 package Day01;
 
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeMethod;
 import java.util.concurrent.TimeUnit;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -30,7 +30,7 @@ public class openBrowserTest {
  	
 	WebDriver driver;
 
-	@Before
+	@BeforeMethod
 	public void beforeMethod() {
 
 		WebDriverManager.chromedriver().setup();
@@ -46,7 +46,7 @@ public class openBrowserTest {
 	}
 	
 	
-	@After
+	@AfterMethod
 	public void afterTest() {
 		driver.close();
 	}	

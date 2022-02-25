@@ -1,11 +1,11 @@
 package PracticeAutimationWebsite;
 
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeMethod;
+import org.testng.AssertJUnit;
 import java.util.concurrent.TimeUnit;
 
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -21,7 +21,7 @@ public class myAccountLogin {
 	String email = "123abc@gmail.com";
 	String password = "TechCircle789!qe";
 
-	@Before
+	@BeforeMethod
 	public void beforeMethod() {
 		WebDriverManager.chromedriver().setup();
 		driver = new ChromeDriver();
@@ -30,7 +30,7 @@ public class myAccountLogin {
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
 	
-	@After
+	@AfterMethod
 	public void afterTest() {
 		driver.close();
 	}	
@@ -49,7 +49,7 @@ public class myAccountLogin {
 		driver.findElement(By.xpath("//*[@id=\"customer_login\"]/div[1]/form/p[3]/input[3]")).click();
 //		7) User must successfully login to the web page
 		String nextUrl = driver.getCurrentUrl();
-		Assert.assertTrue(currentUrl.equals(nextUrl));
+		AssertJUnit.assertTrue(currentUrl.equals(nextUrl));
 		System.out.println(driver.getTitle());
 	}
 	
@@ -66,7 +66,7 @@ public class myAccountLogin {
 		driver.findElement(By.id("body")).click();
 		driver.findElement(By.xpath("//*[@id=\"customer_login\"]/div[1]/form/p[3]/input[3]")).click();
 //		7) Proper error must be displayed(ie Invalid username) and prompt to enter login again
-		Assert.assertTrue(driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/ul")).isDisplayed());
+		AssertJUnit.assertTrue(driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/ul")).isDisplayed());
 		System.out.println(driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/ul")).getText());
 	}
 
@@ -82,7 +82,7 @@ public class myAccountLogin {
 		driver.findElement(By.id("body")).click();
 		driver.findElement(By.xpath("//*[@id=\"customer_login\"]/div[1]/form/p[3]/input[3]")).click();
 //		7) Proper error must be displayed(ie Invalid password) and prompt to enter login again
-		Assert.assertTrue(driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/ul")).isDisplayed());
+		AssertJUnit.assertTrue(driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/ul")).isDisplayed());
 		System.out.println(driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/ul")).getText());
 	}
 
@@ -98,7 +98,7 @@ public class myAccountLogin {
 		driver.findElement(By.id("body")).click();
 		driver.findElement(By.xpath("//*[@id=\"customer_login\"]/div[1]/form/p[3]/input[3]")).click();
 //		7) Proper error must be displayed(ie Invalid username) and prompt to enter login again
-		Assert.assertTrue(driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/ul")).isDisplayed());
+		AssertJUnit.assertTrue(driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/ul")).isDisplayed());
 		System.out.println(driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/ul")).getText());
 	}
 	
@@ -114,7 +114,7 @@ public class myAccountLogin {
 		driver.findElement(By.id("body")).click();
 		driver.findElement(By.xpath("//*[@id=\"customer_login\"]/div[1]/form/p[3]/input[3]")).click();
 //		7) Proper error must be displayed(ie required username) and prompt to enter login again
-		Assert.assertTrue(driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/ul")).isDisplayed());
+		AssertJUnit.assertTrue(driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/ul")).isDisplayed());
 		System.out.println(driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/ul")).getText());
 	}
 	
@@ -127,7 +127,7 @@ public class myAccountLogin {
 //		5) The password field should display the characters in asterisks or 
 //		bullets such that the password is not visible on the screen, masked password
 		boolean isEncryped = driver.findElement(loginPassword).getAttribute("type").equals("password");
-		Assert.assertTrue(isEncryped);
+		AssertJUnit.assertTrue(isEncryped);
 		System.out.println(isEncryped);
 	}
 
@@ -143,7 +143,7 @@ public class myAccountLogin {
 		driver.findElement(By.id("body")).click();
 		driver.findElement(By.xpath("//*[@id=\"customer_login\"]/div[1]/form/p[3]/input[3]")).click();
 //		7) Login must fail saying incorrect username/password.
-		Assert.assertTrue(driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/ul")).isDisplayed());
+		AssertJUnit.assertTrue(driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/ul")).isDisplayed());
 		System.out.println(driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/ul")).getText());
 	}
 	
@@ -174,7 +174,7 @@ public class myAccountLogin {
 //		8) Now press back button
 		driver.navigate().back();
 //		9) User shouldn’t be signed in to his account rather a general webpage must be visible
-		Assert.assertTrue(driver.findElement(By.xpath("//*[@id=\"customer_login\"]/div[1]/h2")).isDisplayed());
+		AssertJUnit.assertTrue(driver.findElement(By.xpath("//*[@id=\"customer_login\"]/div[1]/h2")).isDisplayed());
 		System.out.println(driver.findElement(By.xpath("//*[@id=\"customer_login\"]/div[1]/h2")).getText()+" Page");
 	}
 	

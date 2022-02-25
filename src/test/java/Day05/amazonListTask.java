@@ -1,10 +1,10 @@
 package Day05;
 
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeMethod;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import org.junit.Before;
-import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -31,7 +31,7 @@ public class amazonListTask {
 //	
 	WebDriver driver;
 
-	@Before
+	@BeforeMethod
 	public void beforeMethod() {
 
 		WebDriverManager.chromedriver().setup();

@@ -1,12 +1,12 @@
 package Day07;
 
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeMethod;
+import org.testng.AssertJUnit;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -16,7 +16,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class phptravelTaskTest {
 	WebDriver driver;
 
-	@Before
+	@BeforeMethod
 	public void beforeMethod() {
 
 		WebDriverManager.chromedriver().setup();
@@ -68,7 +68,7 @@ public class phptravelTaskTest {
 		String actualTitle = driver.findElement(By.xpath("/html/body/div/div[1]/div[1]/small/strong")).getText();
 		String expectedTitle = "Bank Transfer USD 50.00";
 
-		Assert.assertEquals(actualTitle, expectedTitle);
+		AssertJUnit.assertEquals(actualTitle, expectedTitle);
 		System.out.println("Passed");
 
 		// click back to invoice
@@ -83,7 +83,7 @@ public class phptravelTaskTest {
 		String expectedPage = "Login - PHPTRAVELS";
 
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		Assert.assertEquals(actualPage, expectedPage);
+		AssertJUnit.assertEquals(actualPage, expectedPage);
 		System.out.println("Logout");
 
 	}

@@ -1,12 +1,12 @@
 package Day01;
 
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeMethod;
+import org.testng.AssertJUnit;
 import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -24,7 +24,7 @@ public class testCaseTest {
 //	String email = "123abc@gmail.com";
 //	String password = "TechCircle789!qe";
 
-	@Before
+	@BeforeMethod
 	public void beforeMethod() {
 		WebDriverManager.chromedriver().setup();
 		driver = new ChromeDriver();
@@ -52,7 +52,7 @@ public class testCaseTest {
 //		10) Tax rate for indian should be 2% and for abroad it should be 5%
 		driver.findElement(By.xpath("//*[@id=\"page-34\"]/div/div[1]/div/div/div/a")).click();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		Assert.assertTrue(driver.findElement(By.xpath("//*[@id=\"s2id_billing_country\"]")).isDisplayed());
+		AssertJUnit.assertTrue(driver.findElement(By.xpath("//*[@id=\"s2id_billing_country\"]")).isDisplayed());
 		driver.findElement(By.xpath("//*[@id=\"s2id_billing_country\"]")).click();
 		List<WebElement> countries = driver.findElements(By.xpath("//*[@id=\"select2-results-1\"]/li"));
 	    Scanner scan = new Scanner(System.in); 

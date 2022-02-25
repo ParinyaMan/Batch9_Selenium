@@ -1,11 +1,10 @@
 package Day06;
 
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeMethod;
+import org.testng.AssertJUnit;
 import java.util.concurrent.TimeUnit;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Ignore;
-import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -17,7 +16,7 @@ public class assertionsTest {
 
 	WebDriver driver;
 
-	@Before
+	@BeforeMethod
 	public void beforeMethod() {
 
 		WebDriverManager.chromedriver().setup();
@@ -27,26 +26,24 @@ public class assertionsTest {
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
 
-	@Ignore
-	@Test
+	@Test(enabled = false)
 	public void assertFalseTest() {
 
 		WebElement checkbox1 = driver.findElement(By.xpath("(//input[@type='checkbox'])[1]"));
 		WebElement checkbox2 = driver.findElement(By.xpath("(//input[@type='checkbox'])[2]"));
 
-		Assert.assertFalse(checkbox1.isSelected()); // expected to be false so passed
+		AssertJUnit.assertFalse(checkbox1.isSelected()); // expected to be false so passed
 		System.out.println("Hello");
 
-		Assert.assertFalse(checkbox2.isSelected()); // expected to be false but it true so failed
+		AssertJUnit.assertFalse(checkbox2.isSelected()); // expected to be false but it true so failed
 		System.out.println("Hello");
 
 	}
 	
-	@Ignore
-	@Test
+	@Test(enabled = false)
 	public void assertTrueTest() {
 
-		Assert.assertTrue(driver.findElement(By.xpath("(//h3[normalize-space()='Checkboxes'])[1]")).isDisplayed());
+		AssertJUnit.assertTrue(driver.findElement(By.xpath("(//h3[normalize-space()='Checkboxes'])[1]")).isDisplayed());
 		System.out.println("Code didn't throw an exception on assertTrueTest");
 
 	}
@@ -57,7 +54,7 @@ public class assertionsTest {
 		String actualTitle = driver.findElement(By.xpath("(//h3[normalize-space()='Checkboxes'])[1]")).getText();
 		String expectedTitle = "Checkboxes";
 		
-		Assert.assertEquals(actualTitle, expectedTitle);
+		AssertJUnit.assertEquals(actualTitle, expectedTitle);
 		System.out.println("Passed");
 		
 	}

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+  <test thread-count="5" name="Test">
+    <classes>
+      <class name="Day07.phptravelTaskTest"/>
+      <class name="Day05.amazonListTask"/>
+      <class name="Day10.dependsOnTest"/>
+      <class name="PracticeAutimationWebsite.myAccount"/>
+      <class name="Day10.orderOfTest"/>
+      <class name="Day07.iframTest"/>
+      <class name="Day08.review.dropDownReview"/>
+      <class name="Day01.openBrowserTest"/>
+      <class name="Day04.StaticdropDownTest"/>
+      <class name="Day06.assertionsTest"/>
+      <class name="Day06.actionClassDragDrop"/>
+      <class name="Day05.dressSaleList"/>
+      <class name="Day08.review.alertsReview"/>
+      <class name="Day05.ReviewWait.ReviewCheckBox"/>
+      <class name="Day02.openAndVerifyTitle"/>
+      <class name="Day10.groupTests"/>
+      <class name="Day03.checkboxIntro"/>
+      <class name="Day02.webElementTesting"/>
+      <class name="Day02.amazonAutomationPractice"/>
+      <class name="Day05.checkSlidders"/>
+      <class name="Day04.fluentWaitExample"/>
+      <class name="Day08.propetiesClass"/>
+      <class name="Day05.ReviewWait.ReviewSessions"/>
+      <class name="Day04.dynamicDropDownTest"/>
+      <class name="Day04.implicitWaitExample"/>
+      <class name="PracticeAutimationWebsite.shop"/>
+      <class name="utilities.Driver"/>
+      <class name="Day07.windowHandlesTest"/>
+      <class name="Day06.actionClassHoverOver"/>
+      <class name="Day02.jUnitTestingExample"/>
+      <class name="PracticeAutimationWebsite.homePage"/>
+      <class name="Day04.explicitWaitExample"/>
+      <class name="Day05.alertsTesting"/>
+      <class name="PracticeAutimationWebsite.myAccountRegistration"/>
+      <class name="Day05.etsyTaskList"/>
+      <class name="Day10.testingTestNGAnnotation"/>
+      <class name="PracticeAutimationWebsite.myAccountLogin"/>
+      <class name="Day09.testingWebDriver"/>
+      <class name="Day03.automationTestCases"/>
+      <class name="Day01.testCaseTest"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

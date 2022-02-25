@@ -1,11 +1,11 @@
 package PracticeAutimationWebsite;
 
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeMethod;
+import org.testng.AssertJUnit;
 import java.util.concurrent.TimeUnit;
 
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -21,7 +21,7 @@ public class myAccountRegistration {
 	String email = "123abc@gmail.com";
 	String password = "TechCircle789!qe";
 
-	@Before
+	@BeforeMethod
 	public void beforeMethod() {
 		WebDriverManager.chromedriver().setup();
 		driver = new ChromeDriver();
@@ -30,7 +30,7 @@ public class myAccountRegistration {
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
 
-	@After
+	@AfterMethod
 	public void afterTest() {
 		driver.close();
 	}
@@ -48,7 +48,7 @@ public class myAccountRegistration {
 		driver.findElement(By.id("body")).click();
 		driver.findElement(By.xpath("//*[@id=\"customer_login\"]/div[2]/form/p[3]/input[3]")).click();
 //		7) User will be registered successfully and will be navigated to the Home page
-		Assert.assertTrue(driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/div/p[1]")).isDisplayed());
+		AssertJUnit.assertTrue(driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/div/p[1]")).isDisplayed());
 		System.out.println(driver.getTitle());
 
 	}
@@ -67,7 +67,7 @@ public class myAccountRegistration {
 		driver.findElement(By.xpath("//*[@id=\"customer_login\"]/div[2]/form/p[3]/input[3]")).click();
 //		7) Registration must fail with a warning message(ie You must enter a valid email address)
 		String nextUrl = driver.getCurrentUrl();
-		Assert.assertTrue(currentUrl.equals(nextUrl));
+		AssertJUnit.assertTrue(currentUrl.equals(nextUrl));
 		System.out.println("Registration failed");
 
 	}
@@ -86,7 +86,7 @@ public class myAccountRegistration {
 		driver.findElement(By.xpath("//*[@id=\"customer_login\"]/div[2]/form/p[3]/input[3]")).click();
 //		7) Registration must fail with a warning message(ie You must enter a valid email address)
 		String nextUrl = driver.getCurrentUrl();
-		Assert.assertTrue(currentUrl.equals(nextUrl));
+		AssertJUnit.assertTrue(currentUrl.equals(nextUrl));
 		System.out.println("Registration failed");
 
 	}
@@ -103,7 +103,7 @@ public class myAccountRegistration {
 		driver.findElement(By.id("body")).click();
 		driver.findElement(By.xpath("//*[@id=\"customer_login\"]/div[2]/form/p[3]/input[3]")).click();
 //		7) Registration must fail with a warning message(ie please enter an account password)
-		Assert.assertTrue(driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/ul/li")).isDisplayed());
+		AssertJUnit.assertTrue(driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/ul/li")).isDisplayed());
 		System.out.println(driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/ul/li")).getText());
 
 	}
@@ -120,7 +120,7 @@ public class myAccountRegistration {
 		driver.findElement(By.id("body")).click();
 		driver.findElement(By.xpath("//*[@id=\"customer_login\"]/div[2]/form/p[3]/input[3]")).click();
 //		7) Registration must fail with a warning message(ie please enter an account password)
-		Assert.assertTrue(driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/ul/li")).isDisplayed());
+		AssertJUnit.assertTrue(driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/ul/li")).isDisplayed());
 		System.out.println(driver.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/ul/li")).getText());
 
 	}

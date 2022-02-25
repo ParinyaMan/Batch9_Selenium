@@ -1,9 +1,8 @@
 package Day02;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Ignore;
-import org.junit.Test;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeMethod;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -13,7 +12,7 @@ public class openAndVerifyTitle {
 	WebDriver driver;
 	
 	
-	@Before
+	@BeforeMethod
 	public void beforeTest() {
 		WebDriverManager.chromedriver().setup();  
 		driver = new ChromeDriver();
@@ -21,13 +20,12 @@ public class openAndVerifyTitle {
 		driver.manage().window().maximize();
 	}
 	
-	@After
+	@AfterMethod
 	public void afterTest() {
 		driver.close();
 	}
 	
-	@Ignore
-	@Test
+	@Test(enabled = false)
 	public void verifyTitle() {
 		String actualPageTitle = driver.getTitle();
 		String expectedPageTitle = "Youtube";
@@ -42,8 +40,7 @@ public class openAndVerifyTitle {
 		
 	}
 	
-	@Ignore
-	@Test
+	@Test(enabled = false)
 	public void verifyURL() {
 		String actualtUrl = driver.getCurrentUrl();
 		String expectedUrl = "https://www.youtube.com/";

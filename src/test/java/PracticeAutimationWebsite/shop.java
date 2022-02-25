@@ -1,13 +1,13 @@
 package PracticeAutimationWebsite;
 
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeMethod;
+import org.testng.AssertJUnit;
 import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -30,7 +30,7 @@ public class shop {
 //	String email = "123abc@gmail.com";
 //	String password = "TechCircle789!qe";
 
-	@Before
+	@BeforeMethod
 	public void beforeMethod() {
 		WebDriverManager.chromedriver().setup();
 		driver = new ChromeDriver();
@@ -39,7 +39,7 @@ public class shop {
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
 
-	@After
+	@AfterMethod
 	public void afterTest() {
 		driver.close();
 	}
@@ -63,7 +63,7 @@ public class shop {
 			System.out.println(book.getText());
 		}
 		String nextUrl = driver.getCurrentUrl();
-		Assert.assertFalse(currentUrl.equals(nextUrl));
+		AssertJUnit.assertFalse(currentUrl.equals(nextUrl));
 
 	}
 
@@ -76,7 +76,7 @@ public class shop {
 		driver.findElement(By.xpath("//*[@id=\"content\"]/ul/li[2]/a[1]/h3")).click();
 //		5) Now user can view only that particular product
 		String nextUrl = driver.getCurrentUrl();
-		Assert.assertFalse(currentUrl.equals(nextUrl));
+		AssertJUnit.assertFalse(currentUrl.equals(nextUrl));
 		System.out.println(driver.getTitle());
 
 	}
@@ -91,7 +91,7 @@ public class shop {
 		select.selectByValue("popularity");
 //		5) Now user can view the popular products only
 		String nextUrl = driver.getCurrentUrl();
-		Assert.assertFalse(currentUrl.equals(nextUrl));
+		AssertJUnit.assertFalse(currentUrl.equals(nextUrl));
 		List<WebElement> books = driver.findElements(By.xpath("//*[@id=\"content\"]/ul/li[\"i\"]"));
 		for (WebElement book : books) {
 			System.out.println(book.getText());
@@ -109,7 +109,7 @@ public class shop {
 		select.selectByValue("rating");
 //		5) Now user can view the popular products only***Average
 		String nextUrl = driver.getCurrentUrl();
-		Assert.assertFalse(currentUrl.equals(nextUrl));
+		AssertJUnit.assertFalse(currentUrl.equals(nextUrl));
 		List<WebElement> books = driver.findElements(By.xpath("//*[@id=\"content\"]/ul/li[\"i\"]"));
 		for (WebElement book : books) {
 			System.out.println(book.getText());
@@ -127,7 +127,7 @@ public class shop {
 		select.selectByValue("date");
 //		5) Now user can view the popular products only***Newness
 		String nextUrl = driver.getCurrentUrl();
-		Assert.assertFalse(currentUrl.equals(nextUrl));
+		AssertJUnit.assertFalse(currentUrl.equals(nextUrl));
 		List<WebElement> books = driver.findElements(By.xpath("//*[@id=\"content\"]/ul/li[\"i\"]"));
 		for (WebElement book : books) {
 			System.out.println(book.getText());
@@ -145,7 +145,7 @@ public class shop {
 		select.selectByValue("price");
 //		5) Now user can view the popular products only***Low to High
 		String nextUrl = driver.getCurrentUrl();
-		Assert.assertFalse(currentUrl.equals(nextUrl));
+		AssertJUnit.assertFalse(currentUrl.equals(nextUrl));
 		List<WebElement> books = driver.findElements(By.xpath("//*[@id=\"content\"]/ul/li[\"i\"]"));
 		for (WebElement book : books) {
 			System.out.println(book.getText());
@@ -163,7 +163,7 @@ public class shop {
 		select.selectByValue("price-desc");
 //		5) Now user can view the popular products only***High to Low
 		String nextUrl = driver.getCurrentUrl();
-		Assert.assertFalse(currentUrl.equals(nextUrl));
+		AssertJUnit.assertFalse(currentUrl.equals(nextUrl));
 		List<WebElement> books = driver.findElements(By.xpath("//*[@id=\"content\"]/ul/li[\"i\"]"));
 		for (WebElement book : books) {
 			System.out.println(book.getText());
@@ -179,7 +179,7 @@ public class shop {
 		driver.findElement(By.xpath("//*[@id=\"content\"]/ul/li[7]/a[2]")).click();
 //		5) Read More option indicates the Out Of Stock.
 //		6) User cannot add the product which has read more option as it was out of stock.	
-		Assert.assertTrue(driver.findElement(By.xpath("//*[@id=\"product-160\"]/div[2]/p")).isDisplayed());
+		AssertJUnit.assertTrue(driver.findElement(By.xpath("//*[@id=\"product-160\"]/div[2]/p")).isDisplayed());
 		System.out.println(driver.findElement(By.xpath("//*[@id=\"product-160\"]/div[2]/p")).getText());
 
 	}
@@ -191,7 +191,7 @@ public class shop {
 //		4) Click on Sale written product in home page
 		driver.findElement(By.xpath("//*[@id=\"content\"]/ul/li[1]/a[1]/span[1]")).click();
 //		5) User can clearly view the actual price with old price striken for the sale written products
-		Assert.assertTrue(driver.findElement(By.xpath("//*[@id=\"product-169\"]/div[2]/div[1]/p")).isDisplayed());
+		AssertJUnit.assertTrue(driver.findElement(By.xpath("//*[@id=\"product-169\"]/div[2]/div[1]/p")).isDisplayed());
 		System.out.println(driver.findElement(By.xpath("//*[@id=\"product-169\"]/div[2]/div[1]/p")).getText());
 	}
 
@@ -230,7 +230,7 @@ public class shop {
 		driver.findElement(By.xpath("//input[@id='place_order']")).click();
 //		13) On clicking place order button user completes his process where the page navigates to Order confirmation page with order details,bank details,customer details and billing details.
 		Thread.sleep(3000);
-		Assert.assertTrue(driver.findElement(By.xpath("//*[@id=\"page-35\"]/div/div[1]")).isDisplayed());
+		AssertJUnit.assertTrue(driver.findElement(By.xpath("//*[@id=\"page-35\"]/div/div[1]")).isDisplayed());
 		System.out.println(driver.findElement(By.xpath("//*[@id=\"page-35\"]/div/div[1]")).getText());
 
 	}
@@ -272,7 +272,7 @@ public class shop {
 		driver.findElement(By.xpath("//input[@id='place_order']")).click();
 //		13) On clicking place order button user completes his process where the page navigates to Order confirmation page with order details,bank details,customer details and billing details.
 		Thread.sleep(3000);
-		Assert.assertTrue(driver.findElement(By.xpath("//*[@id=\"page-35\"]/div/div[1]")).isDisplayed());
+		AssertJUnit.assertTrue(driver.findElement(By.xpath("//*[@id=\"page-35\"]/div/div[1]")).isDisplayed());
 		System.out.println(driver.findElement(By.xpath("//*[@id=\"page-35\"]/div/div[1]")).getText());
 
 	}
@@ -297,7 +297,7 @@ public class shop {
 //		10) Tax rate for indian should be 2% and for abroad it should be 5%
 		driver.findElement(By.xpath("//*[@id=\"page-34\"]/div/div[1]/div/div/div/a")).click();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		Assert.assertTrue(driver.findElement(By.xpath("//*[@id=\"s2id_billing_country\"]")).isDisplayed());
+		AssertJUnit.assertTrue(driver.findElement(By.xpath("//*[@id=\"s2id_billing_country\"]")).isDisplayed());
 		driver.findElement(By.xpath("//*[@id=\"s2id_billing_country\"]")).click();
 		List<WebElement> countries = driver.findElements(By.xpath("//*[@id=\"select2-results-1\"]/li"));
 		Scanner scan = new Scanner(System.in);

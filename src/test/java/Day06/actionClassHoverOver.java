@@ -1,10 +1,9 @@
 package Day06;
 
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeMethod;
 import java.util.concurrent.TimeUnit;
 
-import org.junit.Before;
-import org.junit.Ignore;
-import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -16,7 +15,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class actionClassHoverOver {
 	WebDriver driver;
 
-	@Before
+	@BeforeMethod
 	public void beforeMethod() {
 
 		WebDriverManager.chromedriver().setup();
@@ -26,8 +25,7 @@ public class actionClassHoverOver {
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
 	
-	@Ignore
-	@Test
+	@Test(enabled = false)
 	public void test1() {
 		
 		Actions action = new Actions(driver);

@@ -1,5 +1,6 @@
 package utilities;
 
+import org.testng.annotations.AfterMethod;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -44,6 +45,7 @@ public class Driver {
 	}
 	
 	//close / quit browser
+	@AfterMethod
 	public static void tearDown() {
 		if(driver != null) {
 			driver.close();
