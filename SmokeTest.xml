@@ -6,7 +6,7 @@
 		<run>
 			<include name="Smoke" />
 			<include name="Regression"/>
-			<exclude name="Integration"/>
+			<exclude name="API"/>
 		</run>
 	</groups>
 

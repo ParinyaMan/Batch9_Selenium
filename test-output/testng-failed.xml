@@ -3,14 +3,24 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="Day10.dependsOnMethodsTest">
+      <class name="PracticeAutimationWebsite.shop">
         <methods>
-          <include name="OpenBrowser"/>
+          <include name="ShopFilterByPriceFunctionality"/>
+          <include name="ShopReadMoreFunctionality"/>
+          <include name="ShopAddBasketViewBasketThroughItemLink"/>
+          <include name="ShopDefaultSortingFunctionalityPopularity"/>
           <include name="beforeMethod"/>
-          <include name="afterMethod"/>
-          <include name="SignIn"/>
+          <include name="ShopDefaultSortingFunctionalityPrice"/>
+          <include name="ShopProductCategoriesFunctionality"/>
+          <include name="ShopSaleFunctionality"/>
+          <include name="ShopAddBasketViewBasketTaxFunctionality"/>
+          <include name="ShopDefaultSortingFunctionalityRating"/>
+          <include name="ShopAddBasketViewBasketFunctionality"/>
+          <include name="afterTest"/>
+          <include name="ShopDefaultSortingFunctionalityPriceDesc"/>
+          <include name="ShopDefaultSortingFunctionalityDate"/>
         </methods>
-      </class> <!-- Day10.dependsOnMethodsTest -->
+      </class> <!-- PracticeAutimationWebsite.shop -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

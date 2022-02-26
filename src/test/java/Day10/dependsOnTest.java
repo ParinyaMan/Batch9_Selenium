@@ -1,4 +1,4 @@
-package Day10_TestNG;
+package Day10;
 
 
 import org.testng.annotations.Test;
@@ -11,7 +11,7 @@ public class dependsOnTest {
 	public void SignIn() {
 		System.out.println("This will excute depending on the success of the open browser method");
 	}
-	@Test(dependsOnGroups = {"Smoke"}, groups = {"Smoke"})
+	@Test(groups = {"Smoke"})
 	public void OpenBrowser() {
 		System.out.println("This will execute first (open browser)");
 		AssertJUnit.assertTrue(true);
