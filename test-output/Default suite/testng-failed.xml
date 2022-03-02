@@ -3,24 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="PracticeAutimationWebsite.shop">
+      <class name="Day11.passingParameters">
         <methods>
-          <include name="ShopFilterByPriceFunctionality"/>
-          <include name="ShopReadMoreFunctionality"/>
-          <include name="ShopAddBasketViewBasketThroughItemLink"/>
-          <include name="ShopDefaultSortingFunctionalityPopularity"/>
-          <include name="beforeMethod"/>
-          <include name="ShopDefaultSortingFunctionalityPrice"/>
-          <include name="ShopProductCategoriesFunctionality"/>
-          <include name="ShopSaleFunctionality"/>
-          <include name="ShopAddBasketViewBasketTaxFunctionality"/>
-          <include name="ShopDefaultSortingFunctionalityRating"/>
-          <include name="ShopAddBasketViewBasketFunctionality"/>
-          <include name="afterTest"/>
-          <include name="ShopDefaultSortingFunctionalityPriceDesc"/>
-          <include name="ShopDefaultSortingFunctionalityDate"/>
+          <include name="SumOf"/>
         </methods>
-      </class> <!-- PracticeAutimationWebsite.shop -->
+      </class> <!-- Day11.passingParameters -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

@@ -7,14 +7,14 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
 public class dependsOnTest {
-	@Test(dependsOnMethods = {"OpenBrowser"}, dependsOnGroups = {"Smoke"})
+	@Test(dependsOnMethods = {"OpenBrowser"}, groups = {"Smoke"})
 	public void SignIn() {
 		System.out.println("This will excute depending on the success of the open browser method");
 	}
-	@Test(groups = {"Smoke"})
+	@Test(dependsOnGroups = {"Smoke"}, groups = {"Smoke"})
 	public void OpenBrowser() {
 		System.out.println("This will execute first (open browser)");
-		AssertJUnit.assertTrue(true);
+		AssertJUnit.assertTrue(false);
 	}
 
 	
