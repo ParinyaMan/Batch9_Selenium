@@ -1,21 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
+<testng-results ignored="2" total="3" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2022-03-03T02:08:30 ICT" name="Suite" finished-at="2022-03-03T02:08:49 ICT" duration-ms="19070">
+  <suite started-at="2022-03-03T21:12:08 EST" name="Default suite" finished-at="2022-03-03T21:12:29 EST" duration-ms="21625">
     <groups>
     </groups>
-    <test started-at="2022-03-03T02:08:30 ICT" name="Parallel Test" finished-at="2022-03-03T02:08:49 ICT" duration-ms="19070">
-      <class name="Day11.ParallelTest">
-        <test-method signature="ChromeTest()[pri:0, instance:Day11.ParallelTest@37654521]" started-at="2022-03-03T02:08:30 ICT" name="ChromeTest" finished-at="2022-03-03T02:08:49 ICT" duration-ms="19014" status="PASS">
+    <test started-at="2022-03-03T21:12:08 EST" name="Default test" finished-at="2022-03-03T21:12:29 EST" duration-ms="21625">
+      <class name="Day13.myAccontLogin">
+        <test-method is-config="true" signature="beforeTest()[pri:0, instance:Day13.myAccontLogin@20ccf40b]" started-at="2022-03-03T21:12:08 EST" name="beforeTest" finished-at="2022-03-03T21:12:22 EST" duration-ms="13827" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- ChromeTest -->
-        <test-method signature="EdgeTest()[pri:0, instance:Day11.ParallelTest@37654521]" started-at="2022-03-03T02:08:30 ICT" name="EdgeTest" finished-at="2022-03-03T02:08:48 ICT" duration-ms="17822" status="PASS">
+        </test-method> <!-- beforeTest -->
+        <test-method signature="LoginWithInvalidUsernameInvalidPassword()[pri:0, instance:Day13.myAccontLogin@20ccf40b]" started-at="2022-03-03T21:12:22 EST" name="LoginWithInvalidUsernameInvalidPassword" finished-at="2022-03-03T21:12:25 EST" duration-ms="3503" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- EdgeTest -->
-      </class> <!-- Day11.ParallelTest -->
-    </test> <!-- Parallel Test -->
-  </suite> <!-- Suite -->
+        </test-method> <!-- LoginWithInvalidUsernameInvalidPassword -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:Day13.myAccontLogin@20ccf40b]" started-at="2022-03-03T21:12:25 EST" name="tearDown" finished-at="2022-03-03T21:12:29 EST" duration-ms="4250" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- Day13.myAccontLogin -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
 </testng-results>

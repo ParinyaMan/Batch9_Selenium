@@ -11,7 +11,7 @@ public class PropertiesReader {
 
 		try {
 			// giving a file path
-			String filePath = "src/test/resources/dataFolder/config.properties";
+			String filePath = Constants.CONFIGURATION_FILEPATH;
 			// open a path to read file
 			FileInputStream input = new FileInputStream(filePath);
 			// init object

@@ -21,7 +21,7 @@ public class testingWebDriver {
 //		driver.findElement(By.id("userIdLabel")).sendKeys(PropertiesReader.getProperty("username"));
 //		driver.findElement(By.id("password")).sendKeys(PropertiesReader.getProperty("freedom123!"));
 //		driver.findElement(By.xpath("/html/body/app-root/div[2]/scr-login/div[3]/form/div[3]/button")).click();
-		Driver.login();
+	
 	
 	}
 
