@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -26,13 +27,23 @@ public class firstExcelTest {
 		System.out.println("1 - " + sheet.getRow(0).getCell(0));
 		System.out.println("2 - " + sheet.getRow(0).getCell(4));
 		
+		//format the data type for file
+		DataFormatter objDefaultFormat = new DataFormatter();
+		
+		System.out.println("\n\nIterating over Rows and Colums using for each loop");
+		
+		for (Row row1 : sheet) {
+			for (Cell cell1 : row1) {
+				
+				String cellValue = objDefaultFormat.formatCellValue(cell1);
+				System.out.print(cellValue + "      \t");
+			}
+			System.out.println(" ");
+		}
+		
+		
+		
 		workbook.close();
-		
-		
-		
-		
-		
-		
 	}
 
 }
