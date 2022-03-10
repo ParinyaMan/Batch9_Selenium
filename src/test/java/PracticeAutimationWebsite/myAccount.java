@@ -28,7 +28,7 @@ public class myAccount {
 		WebDriverManager.chromedriver().setup();
 		driver = new ChromeDriver();
 		driver.get("http://practice.automationtesting.in");
-//		driver.manage().window().maximize();
+		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
 

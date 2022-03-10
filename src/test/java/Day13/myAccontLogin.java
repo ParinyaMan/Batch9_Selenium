@@ -33,7 +33,6 @@ public class myAccontLogin extends CommonMethods {
 	myAPage.passwordField.sendKeys(PropertiesReader.getProperty("automationPassword"));
 //	6) Click on login button
 	myAPage.loginButton.click();
-
 //	7) User must successfully login to the web page	
 	myAPage.signOutButton.click();
 

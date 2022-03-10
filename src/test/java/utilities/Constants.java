@@ -3,7 +3,7 @@ package utilities;
 public class Constants {
 
 	public static final int IMPLICIT_WAIT_TIME = 10;
-														//avoid git to confuse
+																//avoid git to confuse
 	public static final String CONFIGURATION_FILEPATH = System.getProperty("user.dir")+"/src/test/resources/dataFolder/config.properties";
 
 //	//find the path from user directory

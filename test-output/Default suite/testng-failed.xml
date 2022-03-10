@@ -3,12 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="Day12.myAccontLogin">
+      <class name="Day11.passingParameters">
         <methods>
-          <include name="beforeTest"/>
-          <include name="LoginWithValidUsernamePassword"/>
+          <include name="SumOf"/>
         </methods>
-      </class> <!-- Day12.myAccontLogin -->
+      </class> <!-- Day11.passingParameters -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
