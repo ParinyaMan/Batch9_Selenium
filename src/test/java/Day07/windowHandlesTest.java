@@ -7,6 +7,7 @@ import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -62,5 +63,7 @@ public class windowHandlesTest {
 
 		driver.switchTo().window(parentID);
 		System.out.println("After switching to Parent window >> " + driver.getTitle());
+//		driver.find_element_by_tag_name('body').send_keys(Keys.CONTROL + Keys.TAB)
+//		driver.findElement(By.tagName("body")).sendKeys(Keys.CONTROL)(Keys.TAB));
 	}
 }

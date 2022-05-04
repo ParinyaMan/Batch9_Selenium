@@ -32,14 +32,15 @@ public class firstWriteExcelTest {
 			cell.setCellValue("Pass");			
 		}
 		
-//		Row row = sheet.getRow(2);
-//		Cell cell = row.createCell(1);
-//		cell.setCellValue("Pete");
+		Row row = sheet.getRow(2);
+		Cell cell = row.createCell(1);
+		cell.setCellValue("Maneesuk");
 		
 		
 		FileOutputStream fos = new FileOutputStream(excelPath);
 		workbook.write(fos);
 		fos.close();
+		workbook.close();
 
 	}
 }

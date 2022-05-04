@@ -6,6 +6,7 @@ import java.io.IOException;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
@@ -26,6 +27,8 @@ public class firstExcelTest {
 		Cell cell = row.getCell(0);
 		System.out.println("1 - " + sheet.getRow(0).getCell(0));
 		System.out.println("2 - " + sheet.getRow(0).getCell(4));
+		XSSFCell cellTest = sheet.getRow(0).getCell(0);
+		System.out.println(cellTest);
 		
 		//format the data type for file
 		DataFormatter objDefaultFormat = new DataFormatter();

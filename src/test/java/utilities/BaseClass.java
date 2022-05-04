@@ -1,11 +1,17 @@
 package utilities;
 
 import java.io.FileInputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
 import org.testng.annotations.AfterMethod;
 
@@ -14,7 +20,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class BaseClass {
 	public static WebDriver driver;
 
-	public static WebDriver getDriver() {
+	public static WebDriver getDriver() throws MalformedURLException {
 
 		if (driver == null) {
 
@@ -33,8 +39,13 @@ public class BaseClass {
 				WebDriverManager.safaridriver().setup();
 				driver = new SafariDriver();
 				break;
-			case "headless":
-				// code
+			case "SauceDriver":
+				ChromeOptions browserOptions = new ChromeOptions();
+			    browserOptions.setCapability("platformName", PropertiesReader.getProperty("platformVersion"));
+			    browserOptions.setCapability("browserVersion", PropertiesReader.getProperty("brownserVersion"));
+			    Map<String, Object> sauceOptions = new HashMap<>();
+			    browserOptions.setCapability("sauce:options", sauceOptions);        
+			    driver = new RemoteWebDriver(new URL(Constants.saceLabURL), browserOptions);
 				break;
 
 			}

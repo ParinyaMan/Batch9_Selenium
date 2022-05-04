@@ -2,12 +2,12 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2022-03-07T21:51:32 EST" name="Suite" finished-at="2022-03-07T21:51:32 EST" duration-ms="70">
+  <suite started-at="2022-04-13T01:49:36 EDT" name="Suite" finished-at="2022-04-13T01:49:36 EDT" duration-ms="60">
     <groups>
     </groups>
-    <test started-at="2022-03-07T21:51:32 EST" name="Test" finished-at="2022-03-07T21:51:32 EST" duration-ms="70">
+    <test started-at="2022-04-13T01:49:36 EDT" name="Test" finished-at="2022-04-13T01:49:36 EDT" duration-ms="60">
       <class name="Day11.passingParameters">
-        <test-method signature="SumOf(int,int)[pri:0, instance:Day11.passingParameters@2df9b86]" started-at="2022-03-07T21:51:32 EST" name="SumOf" finished-at="2022-03-07T21:51:32 EST" duration-ms="11" status="PASS">
+        <test-method signature="SumOf(int,int)[pri:0, instance:Day11.passingParameters@2053d869]" started-at="2022-04-13T01:49:36 EDT" name="SumOf" finished-at="2022-04-13T01:49:36 EDT" duration-ms="12" status="PASS">
           <params>
             <param index="0">
               <value>

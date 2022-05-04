@@ -5,7 +5,9 @@ public class Constants {
 	public static final int IMPLICIT_WAIT_TIME = 10;
 																//avoid git to confuse
 	public static final String CONFIGURATION_FILEPATH = System.getProperty("user.dir")+"/src/test/resources/dataFolder/config.properties";
-
+	
+	public static final String saceLabURL = "http://"+BaseClass.getProperty("slusername")+":"+BaseClass.getProperty("slaccesskey")+"@ondemand.saucelabs.com:80/wd/hub";
+	
 //	//find the path from user directory
 //	public static void main(String[] args) {
 //		System.out.println(System.getProperty("user.dir"));

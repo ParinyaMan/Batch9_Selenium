@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
-  <test thread-count="5" name="Test(failed)">
+  <test thread-count="5" name="SmokeTest(failed)">
+    <groups>
+      <run>
+        <include name="Smoke"/>
+      </run>
+    </groups>
     <classes>
-      <class name="Day12.myAccontLogin">
+      <class name="Day10.dependsOnTest">
         <methods>
-          <include name="LoginWithInvalidUsernameInvalidPassword"/>
-          <include name="LoginWithValidUsernameEmptyPassword"/>
-          <include name="beforeTest"/>
-          <include name="LoginWithValidUsernamePassword"/>
+          <include name="OpenBrowser"/>
+          <include name="SignIn"/>
         </methods>
-      </class> <!-- Day12.myAccontLogin -->
+      </class> <!-- Day10.dependsOnTest -->
     </classes>
-  </test> <!-- Test(failed) -->
+  </test> <!-- SmokeTest(failed) -->
 </suite> <!-- Failed suite [Suite] -->
